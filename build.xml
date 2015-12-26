@@ -1,0 +1,126 @@
+<project name="Javokus" default="all" basedir=".">
+
+    <!-- Properties -->
+
+    <property name="src.dir" value="src"/>
+    <property name="tst.dir" value="tst"/>
+
+    <property name="lib.dir" value="lib"/>
+    <property name="cobertura.lib.dir" value="${lib.dir}/cobertura_lib"/>
+
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="instrumented.dir" value="${build.dir}/instrumented"/>
+    <property name="cobertura.datafile" value="${build.dir}/cobertura.ser"/>
+    <property name="testclasses.dir" value="${build.dir}/testclasses"/>
+    <property name="reports.dir" value="${build.dir}/reports"/>
+    <property name="junit.reports.dir" value="${reports.dir}/junit"/>
+    <property name="junit.xml.reports.dir" value="${junit.reports.dir}/xml"/>
+    <property name="junit.html.reports.dir" value="${junit.reports.dir}/html"/>
+    <property name="cobertura.reports.dir" value="${reports.dir}/cobertura"/>
+
+    <property name="cobertura.jar" value="cobertura-2.1.1.jar"/>
+    <property name="junit.jar" value="junit-4.12.jar"/>
+    <property name="hamcrest.jar" value="hamcrest-core-1.3.jar"/>
+
+    <!-- Paths -->
+
+    <path id="source.compile.classpath">
+        <!-- TODO add specific jars here, when needed -->
+        <pathelement location="${lib.dir}"/>
+    </path>
+
+    <path id="cobertura.classpath">
+        <pathelement location="${lib.dir}/${cobertura.jar}"/>
+        <fileset dir="${cobertura.lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="test.compile.classpath">
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${lib.dir}/${junit.jar}"/>
+    </path>
+
+    <path id="test.runtime.classpath">
+        <pathelement location="${testclasses.dir}"/>
+        <pathelement location="${instrumented.dir}"/>
+        <!-- TODO add config dir here, when needed -->
+        <pathelement location="${lib.dir}/${junit.jar}"/>
+        <pathelement location="${lib.dir}/${hamcrest.jar}"/>
+    </path>
+
+    <!-- Taskdefs -->
+
+     <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+
+    <!-- Targets -->
+
+    <target name="clean">
+        <delete includeEmptyDirs="true">
+            <fileset dir="${build.dir}" erroronmissingdir="false"/>
+        </delete>
+    </target>
+
+    <target name="create.directories">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${testclasses.dir}"/>
+        <mkdir dir="${reports.dir}"/>
+        <mkdir dir="${junit.reports.dir}"/>
+        <mkdir dir="${junit.xml.reports.dir}"/>
+        <mkdir dir="${junit.html.reports.dir}"/>
+        <mkdir dir="${cobertura.reports.dir}"/>
+    </target>
+
+    <target name="compile.sources" depends="create.directories">
+        <javac classpathref="source.compile.classpath" srcdir="${src.dir}" destdir="${classes.dir}" debug="on" fork="true" includeantruntime="no"/>
+    </target>
+
+    <target name="instrument" depends="compile.sources">
+        <cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.datafile}">
+            <includeclasses regex=".*"/>
+            <instrumentationClasspath>
+                <pathelement location="${classes.dir}"/>
+            </instrumentationClasspath>
+        </cobertura-instrument>
+    </target>
+
+    <target name="compile.tests">
+        <javac classpathref="test.compile.classpath" srcdir="${tst.dir}" destdir="${testclasses.dir}" debug="on" fork="true" includeantruntime="no"/>
+    </target>
+
+    <target name="test" depends="instrument,compile.tests">
+        <junit printsummary="yes" haltonfailure="no" showoutput="true">
+            <!-- junit -->
+            <formatter type="xml"/>
+            <classpath refid="test.runtime.classpath"/>
+            <batchtest fork="yes" todir="${junit.xml.reports.dir}">
+                <fileset dir="${tst.dir}">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+            <!-- cobertura -->
+            <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.datafile}"/>
+            <classpath refid="cobertura.classpath"/>
+        </junit>
+    </target>
+
+    <target name="cobertura.report" depends="test">
+        <cobertura-report format="html" destdir="${cobertura.reports.dir}" datafile="${cobertura.datafile}" srcdir="${src.dir}"/>
+    </target>
+
+    <target name="junit.report" depends="test">
+        <junitreport todir="${junit.html.reports.dir}">
+            <fileset dir="${junit.xml.reports.dir}" includes="TEST-*.xml"/>
+            <report todir="${junit.html.reports.dir}"/>
+        </junitreport>
+    </target>
+
+    <target name="report" depends="cobertura.report,junit.report">
+    </target>
+
+    <target name="all" depends="clean,create.directories,compile.sources,instrument,compile.tests,test,report">
+    </target>
+
+</project>
