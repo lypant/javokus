@@ -94,6 +94,9 @@
         <junit printsummary="yes" haltonfailure="no" showoutput="true">
             <!-- junit -->
             <formatter type="xml"/>
+            <assertions>
+                <enable/>
+            </assertions>
             <classpath refid="test.runtime.classpath"/>
             <batchtest fork="yes" todir="${junit.xml.reports.dir}">
                 <fileset dir="${tst.dir}">
