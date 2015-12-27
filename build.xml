@@ -45,6 +45,7 @@
     <path id="test.runtime.classpath">
         <pathelement location="${testclasses.dir}"/>
         <pathelement location="${instrumented.dir}"/>
+        <pathelement location="${classes.dir}"/>
         <!-- TODO add config dir here, when needed -->
         <pathelement location="${lib.dir}/${junit.jar}"/>
         <pathelement location="${lib.dir}/${hamcrest.jar}"/>
@@ -79,10 +80,10 @@
 
     <target name="instrument" depends="compile.sources">
         <cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.datafile}">
-            <includeclasses regex=".*"/>
-            <instrumentationClasspath>
-                <pathelement location="${classes.dir}"/>
-            </instrumentationClasspath>
+            <fileset dir="${classes.dir}">
+                <include name="**/*.class"/>
+                <exclude name="**/Transformation*.class"/>
+            </fileset>
         </cobertura-instrument>
     </target>
 
