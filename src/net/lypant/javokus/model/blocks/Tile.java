@@ -7,6 +7,17 @@ public class Tile
     private int x = MIN_COORDINATE_VALUE;
     private int y = MIN_COORDINATE_VALUE;
 
+    public Tile(int x, int y)
+    {
+        setX(x);
+        setY(y);
+    }
+
+    public Tile()
+    {
+        this(0, 0);
+    }
+
     public int getX()
     {
         return x;

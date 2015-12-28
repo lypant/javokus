@@ -125,5 +125,19 @@ public class TileTest
     {
         tile.setY(5);
     }
+
+    @Test
+    public void parametrizedConstructorX()
+    {
+        Tile t = new Tile(1, 2);
+        assertEquals(1, t.getX());
+    }
+
+    @Test
+    public void parametrizedConstructorY()
+    {
+        Tile t = new Tile(1, 2);
+        assertEquals(2, t.getY());
+    }
 }
 
