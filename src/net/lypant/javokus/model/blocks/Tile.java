@@ -1,6 +1,6 @@
 package net.lypant.javokus.model.blocks;
 
-public class Tile
+public class Tile implements Comparable<Tile>
 {
     private final static int MIN_COORDINATE_VALUE = 0;
     private final static int MAX_COORDINATE_VALUE = 4;
@@ -42,6 +42,100 @@ public class Tile
         assert y <= MAX_COORDINATE_VALUE : "y more than " + MAX_COORDINATE_VALUE;
 
         this.y = y;
+    }
+
+    @Override
+    public int compareTo(Tile tile)
+    {
+        int result;
+
+        if(tile == null)
+        {
+            // null first approach
+            result = 1;
+        }
+        else
+        {
+            result = compareToNonNullTile(tile);
+        }
+
+        return result;
+    }
+
+    private int compareToNonNullTile(Tile tile)
+    {
+        int result;
+
+        if(isSameTileAs(tile))
+        {
+            result = 0;
+        }
+        else
+        {
+            result = compareToDifferentTile(tile);
+        }
+
+        return result;
+    }
+
+    private boolean isSameTileAs(Tile tile)
+    {
+        return this == tile;
+    }
+
+    private int compareToDifferentTile(Tile tile)
+    {
+        int result = Integer.compareUnsigned(y, tile.y);;
+
+        if(result == 0)
+        {
+            result = Integer.compareUnsigned(x, tile.x);
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object object)
+    {
+        boolean result;
+
+        if(object == null)
+        {
+            result = false;
+        }
+        else
+        {
+            result = checkNonNullEquality(object);
+        }
+
+        return result;
+    }
+
+    private boolean checkNonNullEquality(Object object)
+    {
+        boolean result;
+
+        if(isSameClassAs(object))
+        {
+            result = equalsTile((Tile)object);
+        }
+        else
+        {
+            result = false;
+        }
+
+        return result;
+    }
+
+    private boolean isSameClassAs(Object object)
+    {
+        return object.getClass() == this.getClass();
+    }
+
+    private boolean equalsTile(Tile tile)
+    {
+        return compareToNonNullTile(tile) == 0;
     }
 }
 
