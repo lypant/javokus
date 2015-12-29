@@ -83,6 +83,7 @@
             <fileset dir="${classes.dir}">
                 <include name="**/*.class"/>
                 <exclude name="**/Transformation*.class"/>
+                <exclude name="**/Transformable*.class"/>
             </fileset>
         </cobertura-instrument>
     </target>
