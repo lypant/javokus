@@ -58,9 +58,21 @@ public class ShapesTest
     }
 
     @Test
+    public void monominoRotationStatesCount()
+    {
+        assertEquals(0, getMonomino().getRotationStatesCount());
+    }
+
+    @Test
     public void monominoMirrorability()
     {
         assertFalse(getMonomino().isMirrorable());
+    }
+
+    @Test
+    public void monominoMirrorStatesCount()
+    {
+        assertEquals(0, getMonomino().getMirrorStatesCount());
     }
 
     @Test
@@ -94,9 +106,21 @@ public class ShapesTest
     }
 
     @Test
+    public void dominoRotationStatesCount()
+    {
+        assertEquals(2, getDomino().getRotationStatesCount());
+    }
+
+    @Test
     public void dominoMirrorability()
     {
         assertFalse(getDomino().isMirrorable());
+    }
+
+    @Test
+    public void dominoMirrorStatesCount()
+    {
+        assertEquals(0, getDomino().getMirrorStatesCount());
     }
 
     @Test

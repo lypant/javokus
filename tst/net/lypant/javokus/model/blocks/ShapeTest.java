@@ -5,99 +5,94 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static net.lypant.javokus.model.blocks.Transformable.Capability.*;
-import net.lypant.javokus.model.blocks.Transformable.*;
+import static net.lypant.javokus.model.blocks.RotationAware.Capability.*;
+import static net.lypant.javokus.model.blocks.MirrorAware.Capability.*;
+import net.lypant.javokus.model.blocks.RotationAware.*;
+import net.lypant.javokus.model.blocks.MirrorAware.*;
 
 public class ShapeTest
 {
     @Test
-    public void creation()
+    public void notRotateableRotateability()
     {
-        Shape shape = new Shape();
-        assertNotNull(shape);
+        RotationAware shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
+        assertFalse(shape.isRotateable());
     }
 
     @Test
-    public void defaultRotateability()
+    public void rotateableTwoTimesRotateability()
     {
-        Transformable transformable = new Shape();
-        assertFalse(transformable.isRotateable());
+        RotationAware shape = new Shape(ROTATEABLE_TWO_TIMES, NOT_MIRRORABLE);
+        assertTrue(shape.isRotateable());
     }
 
     @Test
-    public void emptyCapabilitiesRotateability()
+    public void rotateableFourTimesRotateability()
     {
-        Transformable transformable = new Shape(EnumSet.noneOf(Capability.class));
-        assertFalse(transformable.isRotateable());
+        RotationAware shape = new Shape(ROTATEABLE_FOUR_TIMES, NOT_MIRRORABLE);
+        assertTrue(shape.isRotateable());
     }
 
     @Test
-    public void mirrorableOnlyCapabilitiesRotateability()
+    public void notRotateableStatesCount()
     {
-        Transformable transformable = new Shape(EnumSet.of(MIRRORABLE));
-        assertFalse(transformable.isRotateable());
+        RotationAware shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
+        assertEquals(0, shape.getRotationStatesCount());
     }
 
     @Test
-    public void rotateableOnlyCapabilitiesRotateability()
+    public void rotateableTwoTimesStatesCount()
     {
-        Transformable transformable = new Shape(EnumSet.of(ROTATEABLE));
-        assertTrue(transformable.isRotateable());
+        RotationAware shape = new Shape(ROTATEABLE_TWO_TIMES, NOT_MIRRORABLE);
+        assertEquals(2, shape.getRotationStatesCount());
     }
 
     @Test
-    public void bothCapabilitiesRotateability()
+    public void rotateableFourTimesStatesCount()
     {
-        Transformable transformable = new Shape(EnumSet.of(ROTATEABLE, MIRRORABLE));
-        assertTrue(transformable.isRotateable());
+        RotationAware shape = new Shape(ROTATEABLE_FOUR_TIMES, NOT_MIRRORABLE);
+        assertEquals(4, shape.getRotationStatesCount());
     }
 
     @Test
-    public void defaultMirrorability()
+    public void notMirrorableMirrorability()
     {
-        Transformable transformable = new Shape();
-        assertFalse(transformable.isMirrorable());
+        MirrorAware shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
+        assertFalse(shape.isMirrorable());
     }
 
     @Test
-    public void emptyCapabilitiesMirrorability()
+    public void mirrorableTwoTimesMirrorability()
     {
-        Transformable transformable = new Shape(EnumSet.noneOf(Capability.class));
-        assertFalse(transformable.isMirrorable());
+        MirrorAware shape = new Shape(NOT_ROTATEABLE, MIRRORABLE_TWO_TIMES);
+        assertTrue(shape.isMirrorable());
     }
 
     @Test
-    public void mirrorableOnlyCapabilitiesMirrorability()
+    public void notMirrorableStatesCount()
     {
-        Transformable transformable = new Shape(EnumSet.of(MIRRORABLE));
-        assertTrue(transformable.isMirrorable());
+        MirrorAware shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
+        assertEquals(0, shape.getMirrorStatesCount());
     }
 
     @Test
-    public void rotateableOnlyCapabilitiesMirrorability()
+    public void mirrorableTwoTimesStatesCount()
     {
-        Transformable transformable = new Shape(EnumSet.of(ROTATEABLE));
-        assertFalse(transformable.isMirrorable());
-    }
-
-    @Test
-    public void bothCapabilitiesMirrorability()
-    {
-        Transformable transformable = new Shape(EnumSet.of(ROTATEABLE, MIRRORABLE));
-        assertTrue(transformable.isMirrorable());
+        MirrorAware shape = new Shape(NOT_ROTATEABLE, MIRRORABLE_TWO_TIMES);
+        assertEquals(2, shape.getMirrorStatesCount());
     }
 
     @Test
     public void noTilesCheckCount()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         assertEquals(0, shape.getTileCount());
     }
 
     @Test
     public void oneTileCheckCount()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         assertEquals(1, shape.getTileCount());
     }
@@ -105,7 +100,7 @@ public class ShapeTest
     @Test
     public void twoTilesCheckCount()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
         assertEquals(2, shape.getTileCount());
@@ -114,7 +109,7 @@ public class ShapeTest
     @Test
     public void threeTilesCheckCount()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
         shape.addTile(new Tile(0, 2));
@@ -124,7 +119,7 @@ public class ShapeTest
     @Test
     public void fourTilesCheckCount()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
         shape.addTile(new Tile(0, 2));
@@ -135,7 +130,7 @@ public class ShapeTest
     @Test
     public void fiveTilesCheckCount()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
         shape.addTile(new Tile(0, 2));
@@ -147,7 +142,7 @@ public class ShapeTest
     @Test(expected = AssertionError.class)
     public void tooManyTiles()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
         shape.addTile(new Tile(0, 2));
@@ -159,15 +154,16 @@ public class ShapeTest
     @Test
     public void getIterator()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         assertNotNull(shape.iterator());
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void tryToRemoveTile()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
+
         Iterator<Tile> it = shape.iterator();
         it.next();
         it.remove();
@@ -176,7 +172,7 @@ public class ShapeTest
     @Test
     public void iterate()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
         shape.addTile(new Tile(0, 2));
@@ -194,54 +190,31 @@ public class ShapeTest
     @Test
     public void widthInitial()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         assertEquals(0, shape.getWidth());
     }
 
     @Test
     public void widthOneTile()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         assertEquals(1, shape.getWidth());
     }
 
     @Test
-    public void widthFiveTiles()
-    {
-        Shape shape = new Shape();
-        shape.addTile(new Tile(0, 0));
-        shape.addTile(new Tile(1, 0));
-        shape.addTile(new Tile(2, 0));
-        shape.addTile(new Tile(3, 0));
-        shape.addTile(new Tile(4, 0));
-        assertEquals(5, shape.getWidth());
-    }
-
-    @Test
     public void heightInitial()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         assertEquals(0, shape.getHeight());
     }
 
     @Test
     public void heightOneTile()
     {
-        Shape shape = new Shape();
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         assertEquals(1, shape.getHeight());
     }
-
-    @Test
-    public void heightFiveTiles()
-    {
-        Shape shape = new Shape();
-        shape.addTile(new Tile(0, 0));
-        shape.addTile(new Tile(0, 1));
-        shape.addTile(new Tile(0, 2));
-        shape.addTile(new Tile(0, 3));
-        shape.addTile(new Tile(0, 4));
-        assertEquals(5, shape.getHeight());
-    }
 }
+

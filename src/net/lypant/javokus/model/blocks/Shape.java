@@ -2,43 +2,140 @@ package net.lypant.javokus.model.blocks;
 
 import java.util.*;
 
-import static net.lypant.javokus.model.blocks.Transformable.Capability.*;
-import net.lypant.javokus.model.blocks.Transformable.*;
-
-public class Shape implements Transformable, Iterable<Tile>
+public class Shape implements Iterable<Tile>, RotationAware, MirrorAware
 {
     private final static int MAX_TILE_COUNT = 5;
-    private EnumSet<Capability> capabilities;
+    private RotationAware.Capability rotationCapability;
+    private MirrorAware.Capability mirrorCapability;
     private Collection<Tile> tiles;
     private Collection<Tile> readOnlyTilesView;
     private Size size;
 
-    public Shape(EnumSet<Capability> capabilities)
+    public Shape(RotationAware.Capability rotationCapability, MirrorAware.Capability mirrorCapability)
     {
-        this.capabilities = capabilities;
+        this.rotationCapability = rotationCapability;
+        this.mirrorCapability = mirrorCapability;
         tiles = new TreeSet<Tile>();
         readOnlyTilesView = Collections.unmodifiableCollection(tiles);
         size = new Size();
     }
 
-    public Shape()
-    {
-        this(EnumSet.noneOf(Capability.class));
-    }
-
+    @Override
     public boolean isRotateable()
     {
-        return capabilities.contains(ROTATEABLE);
+        boolean result = false;
+
+        switch(rotationCapability)
+        {
+            case NOT_ROTATEABLE:
+            {
+                result = false;
+                break;
+            }
+            case ROTATEABLE_TWO_TIMES:
+            {
+                result = true;
+                break;
+            }
+            case ROTATEABLE_FOUR_TIMES:
+            {
+                result = true;
+                break;
+            }
+            default:
+            {
+                assert false : "unsupported rotation capability: " + rotationCapability;
+                break;
+            }
+        }
+
+        return result;
     }
 
+    @Override
+    public int getRotationStatesCount()
+    {
+        int result = 0;
+
+        switch(rotationCapability)
+        {
+            case NOT_ROTATEABLE:
+            {
+                result = 0;
+                break;
+            }
+            case ROTATEABLE_TWO_TIMES:
+            {
+                result = 2;
+                break;
+            }
+            case ROTATEABLE_FOUR_TIMES:
+            {
+                result = 4;
+                break;
+            }
+            default:
+            {
+                assert false : "unsupported rotation capability: " + rotationCapability;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    @Override
     public boolean isMirrorable()
     {
-        return capabilities.contains(MIRRORABLE);
+        boolean result = false;
+
+        switch(mirrorCapability)
+        {
+            case NOT_MIRRORABLE:
+            {
+                result = false;
+                break;
+            }
+            case MIRRORABLE_TWO_TIMES:
+            {
+                result = true;
+                break;
+            }
+            default:
+            {
+                assert false : "unsupported mirror capability: " + mirrorCapability;
+                break;
+            }
+        }
+
+        return result;
     }
 
-    public Iterator<Tile> iterator()
+    @Override
+    public int getMirrorStatesCount()
     {
-        return readOnlyTilesView.iterator();
+        int result = 0;
+
+        switch(mirrorCapability)
+        {
+            case NOT_MIRRORABLE:
+            {
+                result = 0;
+                break;
+            }
+            case MIRRORABLE_TWO_TIMES:
+            {
+                result = 2;
+                break;
+            }
+            default:
+            {
+                assert false : "unsupported mirror capability: " + mirrorCapability;
+                break;
+            }
+        }
+
+        return result;
     }
 
     public void addTile(Tile tile)
@@ -52,6 +149,11 @@ public class Shape implements Transformable, Iterable<Tile>
     public int getTileCount()
     {
         return tiles.size();
+    }
+
+    public Iterator<Tile> iterator()
+    {
+        return readOnlyTilesView.iterator();
     }
 
     public int getWidth()

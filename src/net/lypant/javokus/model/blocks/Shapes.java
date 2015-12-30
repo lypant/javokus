@@ -3,7 +3,8 @@ package net.lypant.javokus.model.blocks;
 import java.util.*;
 
 import static net.lypant.javokus.model.blocks.Shapes.Name.*;
-import static net.lypant.javokus.model.blocks.Transformable.Capability.*;
+import static net.lypant.javokus.model.blocks.RotationAware.Capability.*;
+import static net.lypant.javokus.model.blocks.MirrorAware.Capability.*;
 
 public class Shapes
 {
@@ -40,20 +41,16 @@ public class Shapes
 
     private Shape createMonomino()
     {
-        Shape shape = new Shape();
-
+        Shape shape = new Shape(NOT_ROTATEABLE, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
-
         return shape;
     }
 
     private Shape createDomino()
     {
-        Shape shape = new Shape(EnumSet.of(ROTATEABLE));
-
+        Shape shape = new Shape(ROTATEABLE_TWO_TIMES, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
-
         return shape;
     }
 }
