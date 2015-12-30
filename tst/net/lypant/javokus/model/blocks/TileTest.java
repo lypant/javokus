@@ -11,7 +11,7 @@ public class TileTest
     @Before
     public void createTile()
     {
-        tile = new Tile();
+        tile = new Tile(0, 0);
     }
 
     @Test
@@ -155,7 +155,7 @@ public class TileTest
     @Test
     public void compareToDifferentObjectWithSameCoordinates()
     {
-        Tile tile2 = new Tile();
+        Tile tile2 = new Tile(0, 0);
         assertEquals(0, tile.compareTo(tile2));
     }
 
@@ -211,7 +211,7 @@ public class TileTest
     @Test
     public void equalsDifferentObjectEqual()
     {
-        Tile tile2 = new Tile();
+        Tile tile2 = new Tile(0, 0);
         assertTrue(tile.equals(tile2));
     }
 

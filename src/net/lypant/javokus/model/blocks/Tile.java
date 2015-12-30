@@ -13,11 +13,6 @@ public class Tile implements Comparable<Tile>
         setY(y);
     }
 
-    public Tile()
-    {
-        this(0, 0);
-    }
-
     public int getX()
     {
         return x;
