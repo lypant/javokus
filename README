@@ -1,3 +1,16 @@
 javokus
 Java project based on Blokus board game
 
+Keywords:
+polyomino
+translation
+rotation
+reflection
+orientation
+tile
+block
+
+TODO:
+- Rename class Shape with Polyomino as it describes shape or a pattern of a block
+- Rename state of a block to orientation (NORMAL_0-NORMAL_270;REFLECTED_0,REFLECTED_270)
+
