@@ -94,6 +94,18 @@ public class ShapesTest
     }
 
     @Test
+    public void monominoWidth()
+    {
+        assertEquals(1, getMonomino().getWidth());
+    }
+
+    @Test
+    public void monominoHeight()
+    {
+        assertEquals(1, getMonomino().getHeight());
+    }
+
+    @Test
     public void domino()
     {
         assertNotNull(getDomino());
@@ -151,6 +163,18 @@ public class ShapesTest
     public void dominoTile1Y()
     {
         assertEquals(1, getTile(getDomino(), 1).getY());
+    }
+
+    @Test
+    public void dominoWidth()
+    {
+        assertEquals(1, getDomino().getWidth());
+    }
+
+    @Test
+    public void dominoHeight()
+    {
+        assertEquals(2, getDomino().getHeight());
     }
 }
 
