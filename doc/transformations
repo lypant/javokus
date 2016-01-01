@@ -1,0 +1,112 @@
+#-------------------------------------------------------------------------------
+# Transformations
+#-------------------------------------------------------------------------------
+
+#---------------------------------------
+# States
+#---------------------------------------
+
+NORMAL_0        MIRRORED_0
+
+4.....          4.....
+3.....          3.....
+2.DE..          2ED...
+1BC...          1.CB..
+0.A...          0.A...
+ 01234           01234
+
+A = (1, 0)      A = (1, 0)
+B = (0, 1)      B = (2, 1)
+C = (1, 1)      C = (1, 1)
+D = (1, 2)      D = (1, 2)
+E = (2, 2)      E = (0, 2)
+
+NORMAL_90       MIRRORED_90
+
+4.....          4.....
+3.....          3.....
+2.B...          2.B...
+1ACD..          1DCA..
+0..E..          0E....
+ 01234           01234
+
+A = (0, 1)      A = (2, 1)
+B = (1, 2)      B = (1, 2)
+C = (1, 1)      C = (1, 1)
+D = (2, 1)      D = (0, 1)
+E = (2, 0)      E = (0, 0)
+
+NORMAL_180      MIRRORED_180
+
+4.....          4.....
+3.....          3.....
+2.A...          2.A...
+1.CB..          1BC...
+0ED...          0.DE..
+ 01234           01234
+
+A = (1, 2)      A = (1, 2)
+B = (2, 1)      B = (0, 1)
+C = (1, 1)      C = (1, 1)
+D = (1, 0)      D = (1, 0)
+E = (0, 0)      E = (2, 0)
+
+NORMAL_270      MIRRORED_270
+
+4.....          4.....
+3.....          3.....
+2E....          2..E..
+1DCA..          1ACD..
+0.B...          0.B...
+ 01234           01234
+
+A = (2, 1)      A = (0, 1)
+B = (1, 0)      B = (1, 0)
+C = (1, 1)      C = (1, 1)
+D = (0, 1)      D = (2, 1)
+E = (0, 2)      E = (2, 2)
+
+#---------------------------------------
+# Formulas
+#---------------------------------------
+
+Shape - state of block in state NORMAL_0
+
+xs - x coordinate of given tile for shape
+ys - y coordinate of given tile for shape
+ws - width of shape
+hs - height of shape
+
+x - x coordinate of given tile for block in current state
+y - y coordinate of given tile for block in current state
+w - width of block in current state
+h - height of block in current state
+
+NORMAL_0            MIRRORED_0
+
+x = xs              x = ws - 1 - xs
+y = ys              y = ys
+w = ws              w = ws
+h = hs              h = hs
+
+NORMAL_90           MIRRORED_90
+
+x = ys              x = hs - 1 - ys
+y = ws - 1 - ys     y = ws - 1 - xs
+w = hs              w = hs
+h = ws              h = ws
+
+NORMAL_180          MIRRORED_180
+
+x = ws - 1 - xs     x = xs
+y = hs - 1 - ys     y = hs - 1 - ys
+w = ws              w = ws
+h = hs              h = hs
+
+NORMAL_270          MIRRORED_270
+
+x = hs - 1 - ys     x = ys
+y = xs              y = xs
+w = hs              w = hs
+h = ws              h = ws
+

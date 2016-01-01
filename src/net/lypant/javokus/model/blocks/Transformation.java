@@ -13,7 +13,7 @@ public interface Transformation
         MIRRORED_180,
         MIRRORED_270
     }
-    
+
     public State getState();
     public void setState(State state);
     public void rotate();
