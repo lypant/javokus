@@ -11,7 +11,8 @@ public class Shapes
     public enum Name
     {
         MONOMINO,
-        DOMINO
+        DOMINO,
+        PENTOMINO_F
     }
 
     private static Shapes instance = new Shapes();
@@ -37,6 +38,7 @@ public class Shapes
     {
         shapes.put(MONOMINO, createMonomino());
         shapes.put(DOMINO, createDomino());
+        shapes.put(PENTOMINO_F,createPentominoF() );
     }
 
     private Shape createMonomino()
@@ -51,6 +53,17 @@ public class Shapes
         Shape shape = new Shape(ROTATEABLE_TWO_TIMES, NOT_MIRRORABLE);
         shape.addTile(new Tile(0, 0));
         shape.addTile(new Tile(0, 1));
+        return shape;
+    }
+
+    private Shape createPentominoF()
+    {
+        Shape shape = new Shape(ROTATEABLE_FOUR_TIMES, MIRRORABLE_TWO_TIMES);
+        shape.addTile(new Tile(1, 0));
+        shape.addTile(new Tile(0, 1));
+        shape.addTile(new Tile(1, 1));
+        shape.addTile(new Tile(1, 2));
+        shape.addTile(new Tile(2, 2));
         return shape;
     }
 }
