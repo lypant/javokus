@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
 
-public class SizeTest
+public class PolyominoSizeTest
 {
-    private Size size = null;
+    private PolyominoSize size = null;
 
     @Before
-    public void createSize()
+    public void createPolyominoSize()
     {
-        size = new Size();
+        size = new PolyominoSize();
     }
 
     @Test

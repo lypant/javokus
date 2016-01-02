@@ -2,21 +2,23 @@ package net.lypant.javokus.model.blocks;
 
 public interface Transformation
 {
-    public enum State
+    public enum Orientation
     {
         NORMAL_0,
         NORMAL_90,
         NORMAL_180,
         NORMAL_270,
-        MIRRORED_0,
-        MIRRORED_90,
-        MIRRORED_180,
-        MIRRORED_270
+        REFLECTED_0,
+        REFLECTED_90,
+        REFLECTED_180,
+        REFLECTED_270
     }
 
-    public State getState();
-    public void setState(State state);
+    public final Orientation DEFAULT_ORIENTATION = Orientation.NORMAL_0;
+
+    public Orientation getOrientation();
+    public void resetOrientation();
     public void rotate();
-    public void mirror();
+    public void reflect();
 }
 

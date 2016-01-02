@@ -1,6 +1,6 @@
 package net.lypant.javokus.model.blocks;
 
-public class Size
+public class PolyominoSize implements Measurable
 {
     private int width = 0;
     private int minX = Integer.MAX_VALUE;
@@ -49,11 +49,13 @@ public class Size
         height = maxY - minY + 1;
     }
 
+    @Override
     public int getWidth()
     {
         return width;
     }
 
+    @Override
     public int getHeight()
     {
         return height;

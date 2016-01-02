@@ -9,7 +9,7 @@ public class Shape implements Iterable<Tile>, RotationAware, MirrorAware
     private MirrorAware.Capability mirrorCapability;
     private Collection<Tile> tiles;
     private Collection<Tile> readOnlyTilesView;
-    private Size size;
+    private PolyominoSize size;
 
     public Shape(RotationAware.Capability rotationCapability, MirrorAware.Capability mirrorCapability)
     {
@@ -17,7 +17,7 @@ public class Shape implements Iterable<Tile>, RotationAware, MirrorAware
         this.mirrorCapability = mirrorCapability;
         tiles = new TreeSet<Tile>();
         readOnlyTilesView = Collections.unmodifiableCollection(tiles);
-        size = new Size();
+        size = new PolyominoSize();
     }
 
     @Override

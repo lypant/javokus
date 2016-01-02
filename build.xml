@@ -83,8 +83,7 @@
             <fileset dir="${classes.dir}">
                 <include name="**/*.class"/>
                 <exclude name="**/Transformation*.class"/>
-                <exclude name="**/RotationAware*.class"/>
-                <exclude name="**/MirrorAware*.class"/>
+                <exclude name="**/Measurable*.class"/>
             </fileset>
         </cobertura-instrument>
     </target>
@@ -126,7 +125,7 @@
     <target name="report" depends="cobertura.report,junit.report">
     </target>
 
-    <target name="all" depends="clean,create.directories,compile.sources,instrument,compile.tests,test,report">
+    <target name="all" depends="clean,create.directories,compile.sources,compile.tests,instrument,test,report">
     </target>
 
 </project>
