@@ -5,33 +5,17 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static net.lypant.javokus.model.blocks.Shapes.Name.*;
-import net.lypant.javokus.model.blocks.Shapes.*;
+import static net.lypant.javokus.model.blocks.Polyominos.Name.*;
 
-public class ShapesTest
+public class PolyominosTest
 {
-    private Shapes shapes = Shapes.getInstance();
+    private Polyominos polyominos = Polyominos.getInstance();
 
-    private Shape getMonomino()
-    {
-        return shapes.getShape(MONOMINO);
-    }
-
-    private Shape getDomino()
-    {
-        return shapes.getShape(DOMINO);
-    }
-
-    private Shape getPentominoF()
-    {
-        return shapes.getShape(PENTOMINO_F);
-    }
-
-    private Tile getTile(Shape shape, int tileIndex)
+    private Tile getTile(Polyomino polyomino, int tileIndex)
     {
         Tile result = null;
 
-        Iterator<Tile> it = shape.iterator();
+        Iterator<Tile> it = polyomino.iterator();
 
         for(int i = 0; i < tileIndex + 1; i++)
         {
@@ -41,13 +25,33 @@ public class ShapesTest
         return result;
     }
 
+    private Polyomino getMonomino()
+    {
+        return polyominos.getPolyomino(MONOMINO);
+    }
+
+    private Polyomino getDomino()
+    {
+        return polyominos.getPolyomino(DOMINO);
+    }
+
+    private Polyomino getPentominoF()
+    {
+        return polyominos.getPolyomino(PENTOMINO_F);
+    }
+
+    @Test
+    public void getInstance()
+    {
+        assertNotNull(Polyominos.getInstance());
+    }
+
     @Test
     public void singleton()
     {
-        Shapes shapes1 = Shapes.getInstance();
-        Shapes shapes2 = Shapes.getInstance();
-
-        assertEquals(shapes1, shapes2);
+        Polyominos polys1 = Polyominos.getInstance();
+        Polyominos polys2 = Polyominos.getInstance();
+        assertEquals(polys1, polys2);
     }
 
     @Test
@@ -63,21 +67,27 @@ public class ShapesTest
     }
 
     @Test
-    public void monominoRotationStatesCount()
+    public void monominoRotationOrientationCount()
     {
-        assertEquals(0, getMonomino().getRotationStatesCount());
+        assertEquals(0, getMonomino().getRotationOrientationCount());
     }
 
     @Test
-    public void monominoMirrorability()
+    public void monominoReflectability()
     {
-        assertFalse(getMonomino().isMirrorable());
+        assertFalse(getMonomino().isReflectable());
     }
 
     @Test
-    public void monominoMirrorStatesCount()
+    public void monominoReflectabilityOptional()
     {
-        assertEquals(0, getMonomino().getMirrorStatesCount());
+        assertFalse(getMonomino().isReflectableOptionally());
+    }
+
+    @Test
+    public void monominoReflectionOrientationCount()
+    {
+        assertEquals(0, getMonomino().getReflectionOrientationCount());
     }
 
     @Test
@@ -123,21 +133,27 @@ public class ShapesTest
     }
 
     @Test
-    public void dominoRotationStatesCount()
+    public void dominoRotationOrientationCount()
     {
-        assertEquals(2, getDomino().getRotationStatesCount());
+        assertEquals(2, getDomino().getRotationOrientationCount());
     }
 
     @Test
-    public void dominoMirrorability()
+    public void dominoReflectability()
     {
-        assertFalse(getDomino().isMirrorable());
+        assertFalse(getDomino().isReflectable());
     }
 
     @Test
-    public void dominoMirrorStatesCount()
+    public void dominoReflectabilityOptional()
     {
-        assertEquals(0, getDomino().getMirrorStatesCount());
+        assertFalse(getDomino().isReflectableOptionally());
+    }
+
+    @Test
+    public void dominoReflectionOrientationCount()
+    {
+        assertEquals(0, getDomino().getReflectionOrientationCount());
     }
 
     @Test
@@ -195,21 +211,27 @@ public class ShapesTest
     }
 
     @Test
-    public void pentominoFRotationStatesCount()
+    public void pentominoFRotationOrientationCount()
     {
-        assertEquals(4, getPentominoF().getRotationStatesCount());
+        assertEquals(4, getPentominoF().getRotationOrientationCount());
     }
 
     @Test
-    public void pentominoFMirrorability()
+    public void pentominoFReflectability()
     {
-        assertTrue(getPentominoF().isMirrorable());
+        assertTrue(getPentominoF().isReflectable());
     }
 
     @Test
-    public void pentominoFMirrorStatesCount()
+    public void pentominoFReflectabilityOptional()
     {
-        assertEquals(2, getPentominoF().getMirrorStatesCount());
+        assertFalse(getPentominoF().isReflectableOptionally());
+    }
+
+    @Test
+    public void pentominoFReflectionOrientationCount()
+    {
+        assertEquals(2, getPentominoF().getReflectionOrientationCount());
     }
 
     @Test

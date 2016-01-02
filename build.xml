@@ -82,8 +82,9 @@
         <cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.datafile}">
             <fileset dir="${classes.dir}">
                 <include name="**/*.class"/>
-                <exclude name="**/Transformation*.class"/>
                 <exclude name="**/Measurable*.class"/>
+                <exclude name="**/Transformation*.class"/>
+                <exclude name="**/Transformability*.class"/>
             </fileset>
         </cobertura-instrument>
     </target>
