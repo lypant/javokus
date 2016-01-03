@@ -3,7 +3,7 @@
 #-------------------------------------------------------------------------------
 
 #---------------------------------------
-# States
+# Orientations
 #---------------------------------------
 
 NORMAL_0        MIRRORED_0
@@ -109,4 +109,268 @@ x = hs - 1 - ys     x = ys
 y = xs              y = xs
 w = hs              w = hs
 h = ws              h = ws
+
+#-------------------------------------------------------------------------------
+# Blocks orientations
+#-------------------------------------------------------------------------------
+
+#---------------------------------------
+# Monomino
+#---------------------------------------
+
+#-------------------
+# Monomino
+#-------------------
+
+OrientationCount:       1
+Rotateable:             no
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     OneOrientation
+
+Orientations:
+
+NORMAL_0
+
+4.....
+3.....
+2.....
+1.....
+0A....
+ 01234
+
+A = (0, 0)
+
+#---------------------------------------
+# Domino
+#---------------------------------------
+
+#-------------------
+# Domino
+#-------------------
+
+OrientationCount:       2
+Rotateable:             yes, 2 times
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     TwoOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90
+
+4.....          4.....
+3.....          3.....
+2.....          2.....
+1B....          1.....
+0A....          0AB...
+ 01234           01234
+
+A = (0, 0)      A = (0, 0)
+B = (0, 1)      B = (1, 0)
+
+#---------------------------------------
+# Trominos
+#---------------------------------------
+
+#-------------------
+# Tromino I
+#-------------------
+
+OrientationCount:       2
+Rotateable:             yes, 2 times
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     TwoOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90
+
+4.....          4.....
+3.....          3.....
+2C....          2.....
+1B....          1.....
+0A....          0ABC..
+ 01234           01234
+
+A = (0, 0)      A = (0, 0)
+B = (0, 1)      B = (1, 0)
+C = (0, 2)      C = (2, 0)
+
+#-------------------
+# Tromino V
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  yes
+TransformationType:     FourOrientationsVW
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+REFLECTED_270   REFLECTED_180   REFLECTED_90    REFLECTED_0
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.....          2.....          2.....          2.....
+1C....          1AC...          1BA...          1.B...
+0AB...          0B....          0.C...          0CA...
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 1)      A = (1, 1)      A = (1, 0)
+B = (1, 0)      B = (0, 0)      B = (0, 1)      B = (1, 1)
+C = (0, 1)      C = (1, 1)      C = (1, 0)      C = (0, 0)
+
+#---------------------------------------
+# Tetrominos
+#---------------------------------------
+
+#-------------------
+# Tetromino I
+#-------------------
+
+OrientationCount:       2
+Rotateable:             yes, 2 times
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     TwoOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90
+
+4.....          4.....
+3D....          3.....
+2C....          2.....
+1B....          1.....
+0A....          0ABCD.
+ 01234           01234
+
+A = (0, 0)      A = (0, 0)
+B = (0, 1)      B = (1, 0)
+C = (0, 2)      C = (2, 0)
+D = (0, 3)      D = (3, 0)
+
+#-------------------
+# Tetromino O
+#-------------------
+
+OrientationCount:       1
+Rotateable:             no
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     OneOrientation
+
+Orientations:
+
+NORMAL_0
+
+4.....
+3.....
+2.....
+1CD...
+0AB...
+ 01234
+
+A = (0, 0)
+B = (1, 0)
+C = (0, 1)
+D = (1, 1)
+
+#-------------------
+# Tetromino T
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  yes
+TransformationType:     FourOrientationsTU
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+REFLECTED_0     REFLECTED_270   REFLECTED_180   REFLECTED_90
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.....          2.B...          2.....          2D....
+1BCD..          1AC...          1.A...          1CA...
+0.A...          0.D...          0DCB..          0B....
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 1)      A = (1, 1)      A = (1, 1)
+B = (0, 1)      B = (1, 2)      B = (2, 0)      B = (0, 0)
+C = (1, 1)      C = (1, 1)      C = (1, 0)      C = (0, 1)
+D = (2, 1)      D = (1, 0)      D = (0, 0)      D = (0, 2)
+
+#-------------------
+# Tetromino L
+#-------------------
+
+OrientationCount:       8
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     EightOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2D....          2.....          2BA...          2.....
+1C....          1ACD..          1.C...          1..B..
+0AB...          0B....          0.D...          0DCA..
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 1)      A = (1, 2)      A = (2, 0)
+B = (1, 0)      B = (0, 0)      B = (0, 2)      B = (2, 1)
+C = (0, 1)      C = (1, 1)      C = (1, 1)      C = (1, 0)
+D = (0, 2)      D = (2, 1)      D = (1, 0)      D = (0, 0)
+
+REFLECTED_0     REFLECTED_90    REFLECTED_180   REFLECTED_270
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.D...          2.....          2AB...          2.....
+1.C...          1DCA..          1C....          1B....
+0BA...          0..B..          0D....          0ACD..
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (2, 1)      A = (0, 2)      A = (0, 0)
+B = (0, 0)      B = (2, 0)      B = (1, 2)      B = (0, 1)
+C = (1, 1)      C = (1, 1)      C = (0, 1)      C = (1, 0)
+D = (1, 2)      D = (0, 1)      D = (0, 0)      D = (2, 0)
+
+#-------------------
+# Tetromino Z
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 2 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     FourOrientationsZ
+
+Orientations:
+
+NORMAL_0        NORMAL_90       REFLECTED_0     REFLECTED_90
+NORMAL_180      NORMAL_270      REFLECTED_180   REFLECTED_270
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.....          2.C...          2.....          2C....
+1CD...          1AD...          1.DC..          1DA...
+0.AB..          0B....          0BA...          0.B...
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 1)      A = (1, 0)      A = (1, 1)
+B = (2, 0)      B = (0, 0)      B = (0, 0)      B = (1, 0)
+C = (0, 1)      C = (1, 2)      C = (2, 1)      C = (0, 2)
+D = (1, 1)      D = (1, 1)      D = (1, 1)      D = (0, 1)
 
