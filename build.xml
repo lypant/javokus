@@ -94,7 +94,7 @@
     </target>
 
     <target name="test" depends="instrument,compile.tests">
-        <junit printsummary="yes" haltonfailure="no" showoutput="true">
+        <junit printsummary="yes" haltonfailure="no" showoutput="true" fork="yes" forkmode="once">
             <!-- junit -->
             <formatter type="xml"/>
             <assertions>
