@@ -6,7 +6,7 @@
 # Orientations
 #---------------------------------------
 
-NORMAL_0        MIRRORED_0
+NORMAL_0        REFLECTED_0
 
 4.....          4.....
 3.....          3.....
@@ -21,7 +21,7 @@ C = (1, 1)      C = (1, 1)
 D = (1, 2)      D = (1, 2)
 E = (2, 2)      E = (0, 2)
 
-NORMAL_90       MIRRORED_90
+NORMAL_90       REFLECTED_90
 
 4.....          4.....
 3.....          3.....
@@ -36,7 +36,7 @@ C = (1, 1)      C = (1, 1)
 D = (2, 1)      D = (0, 1)
 E = (2, 0)      E = (0, 0)
 
-NORMAL_180      MIRRORED_180
+NORMAL_180      REFLECTED_180
 
 4.....          4.....
 3.....          3.....
@@ -51,7 +51,7 @@ C = (1, 1)      C = (1, 1)
 D = (1, 0)      D = (1, 0)
 E = (0, 0)      E = (2, 0)
 
-NORMAL_270      MIRRORED_270
+NORMAL_270      REFLECTED_270
 
 4.....          4.....
 3.....          3.....
@@ -82,28 +82,28 @@ y - y coordinate of given tile for block in current state
 w - width of block in current state
 h - height of block in current state
 
-NORMAL_0            MIRRORED_0
+NORMAL_0            REFLECTED_0
 
 x = xs              x = ws - 1 - xs
 y = ys              y = ys
 w = ws              w = ws
 h = hs              h = hs
 
-NORMAL_90           MIRRORED_90
+NORMAL_90           REFLECTED_90
 
 x = ys              x = hs - 1 - ys
 y = ws - 1 - ys     y = ws - 1 - xs
 w = hs              w = hs
 h = ws              h = ws
 
-NORMAL_180          MIRRORED_180
+NORMAL_180          REFLECTED_180
 
 x = ws - 1 - xs     x = xs
 y = hs - 1 - ys     y = hs - 1 - ys
 w = ws              w = ws
 h = hs              h = hs
 
-NORMAL_270          MIRRORED_270
+NORMAL_270          REFLECTED_270
 
 x = hs - 1 - ys     x = ys
 y = xs              y = xs
@@ -229,32 +229,6 @@ C = (0, 1)      C = (1, 1)      C = (1, 0)      C = (0, 0)
 #---------------------------------------
 
 #-------------------
-# Tetromino I
-#-------------------
-
-OrientationCount:       2
-Rotateable:             yes, 2 times
-Reflectable:            no
-RaflectableOptionally:  no
-TransformationType:     TwoOrientations
-
-Orientations:
-
-NORMAL_0        NORMAL_90
-
-4.....          4.....
-3D....          3.....
-2C....          2.....
-1B....          1.....
-0A....          0ABCD.
- 01234           01234
-
-A = (0, 0)      A = (0, 0)
-B = (0, 1)      B = (1, 0)
-C = (0, 2)      C = (2, 0)
-D = (0, 3)      D = (3, 0)
-
-#-------------------
 # Tetromino O
 #-------------------
 
@@ -279,6 +253,32 @@ A = (0, 0)
 B = (1, 0)
 C = (0, 1)
 D = (1, 1)
+
+#-------------------
+# Tetromino I
+#-------------------
+
+OrientationCount:       2
+Rotateable:             yes, 2 times
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     TwoOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90
+
+4.....          4.....
+3D....          3.....
+2C....          2.....
+1B....          1.....
+0A....          0ABCD.
+ 01234           01234
+
+A = (0, 0)      A = (0, 0)
+B = (0, 1)      B = (1, 0)
+C = (0, 2)      C = (2, 0)
+D = (0, 3)      D = (3, 0)
 
 #-------------------
 # Tetromino T
@@ -306,6 +306,33 @@ A = (1, 0)      A = (0, 1)      A = (1, 1)      A = (1, 1)
 B = (0, 1)      B = (1, 2)      B = (2, 0)      B = (0, 0)
 C = (1, 1)      C = (1, 1)      C = (1, 0)      C = (0, 1)
 D = (2, 1)      D = (1, 0)      D = (0, 0)      D = (0, 2)
+
+#-------------------
+# Tetromino Z
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 2 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     FourOrientationsZ
+
+Orientations:
+
+NORMAL_0        NORMAL_90       REFLECTED_0     REFLECTED_90
+NORMAL_180      NORMAL_270      REFLECTED_180   REFLECTED_270
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.....          2.C...          2.....          2C....
+1CD...          1AD...          1.DC..          1DA...
+0.AB..          0B....          0BA...          0.B...
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 1)      A = (1, 0)      A = (1, 1)
+B = (2, 0)      B = (0, 0)      B = (0, 0)      B = (1, 0)
+C = (0, 1)      C = (1, 2)      C = (2, 1)      C = (0, 2)
+D = (1, 1)      D = (1, 1)      D = (1, 1)      D = (0, 1)
 
 #-------------------
 # Tetromino L
@@ -347,8 +374,179 @@ B = (0, 0)      B = (2, 0)      B = (1, 2)      B = (0, 1)
 C = (1, 1)      C = (1, 1)      C = (0, 1)      C = (1, 0)
 D = (1, 2)      D = (0, 1)      D = (0, 0)      D = (2, 0)
 
+
+#---------------------------------------
+# Pentominos
+#---------------------------------------
+
 #-------------------
-# Tetromino Z
+# Pentomino X
+#-------------------
+
+OrientationCount:       1
+Rotateable:             no
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     OneOrientation
+
+Orientations:
+
+NORMAL_0
+
+4.....
+3.....
+2.E...
+1BCD..
+0.A...
+ 01234
+
+A = (1, 0)
+B = (0, 1)
+C = (1, 1)
+D = (2, 1)
+E = (1, 2)
+
+#-------------------
+# Pentomino I
+#-------------------
+
+OrientationCount:       2
+Rotateable:             yes, 2 times
+Reflectable:            no
+RaflectableOptionally:  no
+TransformationType:     TwoOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90
+
+4E....          4.....
+3C....          3.....
+2D....          2.....
+1B....          1.....
+0A....          0ABCDE
+ 01234           01234
+
+A = (0, 0)      A = (0, 0)
+B = (0, 1)      B = (1, 0)
+C = (0, 2)      C = (2, 0)
+D = (0, 3)      D = (3, 0)
+E = (0, 4)      E = (4, 0)
+
+#-------------------
+# Pentomino T
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  yes
+TransformationType:     FourOrientationsTU
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+REFLECTED_0     REFLECTED_270   REFLECTED_180   REFLECTED_90
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2CDE..          2..C..          2.A...          2E....
+1.B...          1ABD..          1.B...          1DBA..
+0.A...          0..E..          0EDC..          0C....
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 1)      A = (1, 2)      A = (2, 1)
+B = (1, 1)      B = (1, 1)      B = (1, 1)      B = (1, 1)
+C = (0, 2)      C = (2, 2)      C = (2, 0)      C = (0, 0)
+D = (1, 2)      D = (2, 1)      D = (1, 0)      D = (0, 1)
+E = (2, 2)      E = (2, 0)      E = (0, 0)      E = (0, 2)
+
+#-------------------
+# Pentomino U
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  yes
+TransformationType:     FourOrientationsTU
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+REFLECTED_0     REFLECTED_270   REFLECTED_180   REFLECTED_90
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.....          2AD...          2.....          2EC...
+1D.E..          1B....          1CBA..          1.B...
+0ABC..          0CE...          0E.D..          0DA...
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 2)      A = (2, 1)      A = (1, 0)
+B = (1, 0)      B = (0, 1)      B = (1, 1)      B = (1, 1)
+C = (2, 0)      C = (0, 0)      C = (0, 1)      C = (1, 2)
+D = (0, 1)      D = (1, 2)      D = (2, 0)      D = (0, 0)
+E = (2, 1)      E = (1, 0)      E = (0, 0)      E = (0, 2)
+
+#-------------------
+# Pentomino V
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  yes
+TransformationType:     FourOrientationsVW
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+REFLECTED_270   REFLECTED_180   REFLECTED_90    REFLECTED_0
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2E....          2ADE..          2CBA..          2..C..
+1D....          1B....          1..D..          1..B..
+0ABC..          0C....          0..E..          0EDA..
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 2)      A = (2, 2)      A = (2, 0)
+B = (1, 0)      B = (0, 1)      B = (1, 2)      B = (2, 1)
+C = (2, 0)      C = (0, 0)      C = (0, 2)      C = (2, 2)
+D = (0, 1)      D = (1, 2)      D = (2, 1)      D = (1, 0)
+E = (0, 2)      E = (2, 2)      E = (2, 0)      E = (0, 0)
+
+#-------------------
+# Pentomino W
+#-------------------
+
+OrientationCount:       4
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  yes
+TransformationType:     FourOrientationsVW
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+REFLECTED_270   REFLECTED_180   REFLECTED_90    REFLECTED_0
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2E....          2.CE..          2BA...          2..B..
+1CD...          1AD...          1.DC..          1.DA..
+0.AB..          0B....          0..E..          0EC...
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 1)      A = (1, 2)      A = (2, 1)
+B = (2, 0)      B = (0, 0)      B = (0, 2)      B = (2, 2)
+C = (0, 1)      C = (1, 2)      C = (2, 1)      C = (1, 0)
+D = (1, 1)      D = (1, 1)      D = (1, 1)      D = (1, 1)
+E = (0, 2)      E = (2, 2)      E = (2, 0)      E = (0, 0)
+
+#-------------------
+# Pentomino Z
 #-------------------
 
 OrientationCount:       4
@@ -364,13 +562,224 @@ NORMAL_180      NORMAL_270      REFLECTED_180   REFLECTED_270
 
 4.....          4.....          4.....          4.....
 3.....          3.....          3.....          3.....
-2.....          2.C...          2.....          2C....
-1CD...          1AD...          1.DC..          1DA...
-0.AB..          0B....          0BA...          0.B...
+2ED...          2..E..          2BA...          2..B..
+1.C...          1ACD..          1.C...          1DCA..
+0.AB..          0B....          0.DE..          0E....
  01234           01234           01234           01234
 
-A = (1, 0)      A = (0, 1)      A = (1, 0)      A = (1, 1)
-B = (2, 0)      B = (0, 0)      B = (0, 0)      B = (1, 0)
-C = (0, 1)      C = (1, 2)      C = (2, 1)      C = (0, 2)
-D = (1, 1)      D = (1, 1)      D = (1, 1)      D = (0, 1)
+A = (1, 0)      A = (0, 1)      A = (1, 2)      A = (2, 1)
+B = (2, 0)      B = (0, 0)      B = (0, 2)      B = (2, 2)
+C = (1, 1)      C = (1, 1)      C = (1, 1)      C = (1, 1)
+D = (1, 2)      D = (2, 1)      D = (1, 0)      D = (0, 1)
+E = (0, 2)      E = (2, 2)      E = (2, 0)      E = (0, 0)
+
+#-------------------
+# Pentomino F
+#-------------------
+
+OrientationCount:       8
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     EightOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2.DE..          2.B...          2.A...          2E....
+1BC...          1ACD..          1.CB..          1DCA..
+0.A...          0..E..          0ED...          0.B...
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 1)      A = (1, 2)      A = (2, 1)
+B = (0, 1)      B = (1, 2)      B = (2, 1)      B = (1, 0)
+C = (1, 1)      C = (1, 1)      C = (1, 1)      C = (1, 1)
+D = (1, 2)      D = (2, 1)      D = (1, 0)      D = (0, 1)
+E = (2, 2)      E = (2, 0)      E = (0, 0)      E = (0, 2)
+
+REFLECTED_0    REFLECTED_90     REFLECTED_180   REFLECTED_270
+
+4.....         4.....           4.....          4.....
+3.....         3.....           3.....          3.....
+2ED...         2.B...           2.A...          2..E..
+1.CB..         1DCA..           1BC...          1ACD..
+0.A...         0E....           0.DE..          0.B...
+ 01234          01234            01234           01234
+
+A = (1, 0)     A = (2, 1)       A = (1, 2)      A = (0, 1)
+B = (2, 1)     B = (1, 2)       B = (0, 1)      B = (1, 0)
+C = (1, 1)     C = (1, 1)       C = (1, 1)      C = (1, 1)
+D = (1, 2)     D = (0, 1)       D = (1, 0)      D = (2, 1)
+E = (0, 2)     E = (0, 0)       E = (2, 0)      E = (2, 2)
+
+#-------------------
+# Pentomino L
+#-------------------
+
+OrientationCount:       8
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     EightOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+
+4.....          4.....          4.....          4.....
+3E....          3.....          3BA...          3.....
+2D....          2.....          2.C...          2.....
+1C....          1ACDE.          1.D...          1...B.
+0AB...          0B....          0.E...          0EDCA.
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 1)      A = (1, 3)      A = (3, 0)
+B = (1, 0)      B = (0, 0)      B = (0, 3)      B = (3, 1)
+C = (0, 1)      C = (1, 1)      C = (1, 2)      C = (2, 0)
+D = (0, 2)      D = (2, 1)      D = (1, 1)      D = (1, 0)
+E = (0, 3)      E = (3, 1)      E = (1, 0)      E = (0, 0)
+
+REFLECTED_0    REFLECTED_90     REFLECTED_180   REFLECTED_270
+
+4.....         4.....           4.....          4.....
+3.E...         3.....           3AB...          3.....
+2.D...         2.....           2C....          2.....
+1.C...         1EDCA.           1D....          1B....
+0BA...         0...B.           0E....          0ACDE.
+ 01234          01234            01234           01234
+
+A = (1, 0)     A = (3, 1)       A = (0, 3)      A = (0, 0)
+B = (0, 0)     B = (3, 0)       B = (1, 3)      B = (0, 1)
+C = (1, 1)     C = (2, 1)       C = (0, 2)      C = (1, 0)
+D = (1, 2)     D = (1, 1)       D = (0, 1)      D = (2, 0)
+E = (1, 3)     E = (0, 1)       E = (0, 0)      E = (3, 0)
+
+#-------------------
+# Pentomino N
+#-------------------
+
+OrientationCount:       8
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     EightOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+
+4.....          4.....          4.....          4.....
+3.E...          3.....          3.A...          3.....
+2.D...          2.....          2CB...          2.....
+1BC...          1AB...          1D....          1EDC..
+0A....          0.CDE.          0E....          0..BA.
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 1)      A = (1, 3)      A = (3, 0)
+B = (0, 1)      B = (1, 1)      B = (1, 2)      B = (2, 0)
+C = (1, 1)      C = (1, 0)      C = (0, 2)      C = (2, 1)
+D = (1, 2)      D = (2, 0)      D = (0, 1)      D = (1, 1)
+E = (1, 3)      E = (3, 0)      E = (0, 0)      E = (0, 1)
+
+REFLECTED_0    REFLECTED_90     REFLECTED_180   REFLECTED_270
+
+4.....         4.....           4.....          4.....
+3E....         3.....           3A....          3.....
+2D....         2.....           2BC...          2.....
+1CB...         1..BA.           1.D...          1.CDE.
+0.A...         0EDC..           0.E...          0AB...
+ 01234          01234            01234           01234
+
+A = (1, 0)     A = (3, 1)       A = (0, 3)      A = (0, 0)
+B = (1, 1)     B = (2, 1)       B = (0, 2)      B = (1, 0)
+C = (0, 1)     C = (2, 0)       C = (1, 2)      C = (1, 1)
+D = (0, 2)     D = (1, 0)       D = (1, 1)      D = (2, 1)
+E = (0, 3)     E = (0, 0)       E = (1, 0)      E = (3, 1)
+
+#-------------------
+# Pentomino P
+#-------------------
+
+OrientationCount:       8
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     EightOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+
+4.....          4.....          4.....          4.....
+3.....          3.....          3.....          3.....
+2DE...          2.....          2.A...          2.....
+1BC...          1ABD..          1CB...          1EC...
+0A....          0.CE..          0ED...          0DBA..
+ 01234           01234           01234           01234
+
+A = (0, 0)      A = (0, 1)      A = (1, 2)      A = (2, 0)
+B = (0, 1)      B = (1, 1)      B = (1, 1)      B = (1, 0)
+C = (1, 1)      C = (1, 0)      C = (0, 1)      C = (1, 1)
+D = (0, 2)      D = (2, 1)      D = (1, 0)      D = (0, 0)
+E = (1, 2)      E = (2, 0)      E = (0, 0)      E = (0, 1)
+
+REFLECTED_0    REFLECTED_90     REFLECTED_180   REFLECTED_270
+
+4.....         4.....           4.....          4.....
+3.....         3.....           3.....          3.....
+2ED...         2.....           2A....          2.....
+1CB...         1DBA..           1BC...          1.CE..
+0.A...         0EC...           0DE...          0ABD..
+ 01234          01234            01234           01234
+
+A = (1, 0)     A = (2, 1)       A = (0, 2)      A = (0, 0)
+B = (1, 1)     B = (1, 1)       B = (0, 1)      B = (1, 0)
+C = (0, 1)     C = (1, 0)       C = (1, 1)      C = (1, 1)
+D = (1, 2)     D = (0, 1)       D = (0, 0)      D = (2, 0)
+E = (0, 2)     E = (0, 0)       E = (1, 0)      E = (2, 1)
+
+#-------------------
+# Pentomino Y
+#-------------------
+
+OrientationCount:       8
+Rotateable:             yes, 4 times
+Reflectable:            yes
+RaflectableOptionally:  no
+TransformationType:     EightOrientations
+
+Orientations:
+
+NORMAL_0        NORMAL_90       NORMAL_180      NORMAL_270
+
+4.....          4.....          4.....          4.....
+3.E...          3.....          3A....          3.....
+2CD...          2.....          2B....          2.....
+1.B...          1..C..          1DC...          1EDBA.
+0.A...          0ABDE.          0E....          0.C...
+ 01234           01234           01234           01234
+
+A = (1, 0)      A = (0, 0)      A = (0, 3)      A = (3, 1)
+B = (1, 1)      B = (1, 0)      B = (0, 2)      B = (2, 1)
+C = (0, 2)      C = (2, 1)      C = (1, 1)      C = (1, 0)
+D = (1, 2)      D = (2, 0)      D = (0, 1)      D = (1, 1)
+E = (1, 3)      E = (3, 0)      E = (0, 0)      E = (0, 1)
+
+REFLECTED_0    REFLECTED_90     REFLECTED_180   REFLECTED_270
+
+4.....         4.....           4.....          4.....
+3E....         3.....           3.A...          3.....
+2DC...         2.....           2.B...          2.....
+1B....         1.C...           1CD...          1ABDE.
+0A....         0EDBA.           0.E...          0..C..
+ 01234          01234            01234           01234
+
+A = (0, 0)     A = (3, 0)       A = (1, 3)      A = (0, 1)
+B = (0, 1)     B = (2, 0)       B = (1, 2)      B = (1, 1)
+C = (1, 2)     C = (1, 1)       C = (0, 1)      C = (2, 0)
+D = (0, 2)     D = (1, 0)       D = (1, 1)      D = (2, 1)
+E = (0, 3)     E = (0, 0)       E = (1, 0)      E = (3, 1)
 
