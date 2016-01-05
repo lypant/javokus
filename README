@@ -11,6 +11,6 @@ tile
 block
 
 TODO:
-- Rename class Shape with Polyomino as it describes shape or a pattern of a block
-- Rename state of a block to orientation (NORMAL_0-NORMAL_270;REFLECTED_0,REFLECTED_270)
+- Add Block tests for width and height after rotations and reflections
+- Add Block functionality to calculate size and tile positions for given orientations
 
