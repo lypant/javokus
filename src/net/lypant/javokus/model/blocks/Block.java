@@ -2,9 +2,6 @@ package net.lypant.javokus.model.blocks;
 
 import static net.lypant.javokus.model.blocks.Transformation.*;
 
-// TODO Remove???
-import static net.lypant.javokus.model.blocks.Transformation.Orientation.*;
-
 public class Block implements Measurable, Transformability, Transformation
 {
     private final Polyomino polyomino;
@@ -19,7 +16,24 @@ public class Block implements Measurable, Transformability, Transformation
     @Override
     public int getWidth()
     {
-        return polyomino.getWidth();
+        int result = 0;
+
+        Orientation orientation = getOrientation();
+
+        switch(orientation)
+        {
+            case NORMAL_0:          // fall through
+            case NORMAL_180:        // fall through
+            case REFLECTED_0:       // fall thhrough
+            case REFLECTED_180:     result = polyomino.getWidth();  break;
+            case NORMAL_90:         // fall through
+            case NORMAL_270:        // fall through
+            case REFLECTED_90:      // fall through
+            case REFLECTED_270:     result = polyomino.getHeight(); break;
+            default:    assert false : "Unhandled orientation: " + orientation; break;
+        }
+
+        return result;
     }
 
     @Override

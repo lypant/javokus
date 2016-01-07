@@ -24,9 +24,19 @@ public class BlockTest
         return createBlock(DOMINO, new TwoOrientations());
     }
 
+    private Block createPentominoI()
+    {
+        return createBlock(PENTOMINO_I, new TwoOrientations());
+    }
+
     private Block createPentominoF()
     {
         return createBlock(PENTOMINO_F, new EightOrientations());
+    }
+
+    private Block createPentominoN()
+    {
+        return createBlock(PENTOMINO_N, new EightOrientations());
     }
 
     @Test
@@ -112,6 +122,14 @@ public class BlockTest
     public void dominoInitialWidth()
     {
         assertEquals(1, createDomino().getWidth());
+    }
+
+    @Test
+    public void dominioNormal90Width()
+    {
+        Block block = createDomino();
+        block.rotate();
+        assertEquals(2, block.getWidth());
     }
 
     @Test
@@ -252,6 +270,78 @@ public class BlockTest
         block.rotate();
         block.resetOrientation();
         assertEquals(NORMAL_0, block.getOrientation());
+    }
+
+    @Test
+    public void pentominoNWidthNormal0()
+    {
+        Block block = createPentominoN();
+        assertEquals(2, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthNormal90()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(4, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthNormal180()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(2, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthNormal270()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(4, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthReflected0()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(2, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthReflected90()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(4, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthReflected180()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNWidthReflected270()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(4, block.getWidth());
     }
 }
 
