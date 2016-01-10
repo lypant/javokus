@@ -92,7 +92,7 @@ h = hs              h = hs
 NORMAL_90           REFLECTED_90
 
 x = ys              x = hs - 1 - ys
-y = ws - 1 - ys     y = ws - 1 - xs
+y = ws - 1 - xs     y = ws - 1 - xs
 w = hs              w = hs
 h = ws              h = ws
 
@@ -106,6 +106,38 @@ h = hs              h = hs
 NORMAL_270          REFLECTED_270
 
 x = hs - 1 - ys     x = ys
+y = xs              y = xs
+w = hs              w = hs
+h = ws              h = ws
+
+#-------------------
+# Using width and height of current orientation
+#-------------------
+
+NORMAL_0            REFLECTED_0
+
+x = xs              x = w - 1 - xs
+y = ys              y = ys
+w = ws              w = ws
+h = hs              h = hs
+
+NORMAL_90           REFLECTED_90
+
+x = ys              x = w - 1 - ys
+y = h - 1 - xs      y = h - 1 - xs
+w = hs              w = hs
+h = ws              h = ws
+
+NORMAL_180          REFLECTED_180
+
+x = w - 1 - xs      x = xs
+y = h - 1 - ys      y = h - 1 - ys
+w = ws              w = ws
+h = hs              h = hs
+
+NORMAL_270          REFLECTED_270
+
+x = w - 1 - ys      x = ys
 y = xs              y = xs
 w = hs              w = hs
 h = ws              h = ws

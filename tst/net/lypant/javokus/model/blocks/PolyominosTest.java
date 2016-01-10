@@ -17,7 +17,7 @@ public class PolyominosTest
 
         Iterator<Tile> it = polyomino.iterator();
 
-        for(int i = 0; i < tileIndex + 1; i++)
+        for(int i = 0; i <= tileIndex; ++i)
         {
            result = it.next(); 
         }

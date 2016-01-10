@@ -3,6 +3,8 @@ package net.lypant.javokus.model.blocks;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.*;
+
 import static net.lypant.javokus.model.blocks.Polyominos.Name.*;
 import static net.lypant.javokus.model.blocks.Transformation.Orientation.*;
 import net.lypant.javokus.model.blocks.Polyominos.*;
@@ -12,6 +14,20 @@ public class BlockTest
     private Block createBlock(Name name, Transformation transformation)
     {
         return new Block(Polyominos.getInstance().getPolyomino(name), transformation);
+    }
+
+    private Tile getTile(Block block, int tileIndex)
+    {
+        Tile result = null;
+
+        Iterator<Tile> it = block.iterator();
+
+        for(int i = 0; i <= tileIndex; ++i)
+        {
+            result = it.next();
+        }
+
+        return result;
     }
 
     private Block createMonomino()
@@ -246,7 +262,7 @@ public class BlockTest
     {
         assertEquals(NORMAL_0, createPentominoF().getOrientation());
     }
-    
+
     @Test
     public void pentominoFRotate()
     {
@@ -254,7 +270,7 @@ public class BlockTest
         block.rotate();
         assertEquals(NORMAL_90, block.getOrientation());
     }
-    
+
     @Test
     public void pentominoFReflect()
     {
@@ -342,6 +358,803 @@ public class BlockTest
         block.rotate();
         block.reflect();
         assertEquals(4, block.getWidth());
+    }
+
+    @Test
+    public void pentominoNHeightNormal0()
+    {
+        Block block = createPentominoN();
+        assertEquals(4, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightNormal90()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(2, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightNormal180()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(4, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightNormal270()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(2, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightReflected0()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(4, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightReflected90()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightReflected180()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(4, block.getHeight());
+    }
+
+    @Test
+    public void pentominoNHeightReflected270()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, block.getHeight());
+    }
+
+    @Test
+    public void getIterator()
+    {
+        Block block = createPentominoN();
+        assertNotNull(block.iterator());
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void tryToRemoveTile()
+    {
+        Iterator<Tile> it = createPentominoN().iterator();
+        it.next();
+        it.remove();
+    }
+
+    @Test
+    public void pentominoNNormal0Tile0X()
+    {
+        assertEquals(0, getTile(createPentominoN(), 0).getX());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile0Y()
+    {
+        assertEquals(0, getTile(createPentominoN(), 0).getY());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile1X()
+    {
+        assertEquals(0, getTile(createPentominoN(), 1).getX());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile1Y()
+    {
+        assertEquals(1, getTile(createPentominoN(), 1).getY());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile2X()
+    {
+        assertEquals(1, getTile(createPentominoN(), 2).getX());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile2Y()
+    {
+        assertEquals(1, getTile(createPentominoN(), 2).getY());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile3X()
+    {
+        assertEquals(1, getTile(createPentominoN(), 3).getX());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile3Y()
+    {
+        assertEquals(2, getTile(createPentominoN(), 3).getY());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile4X()
+    {
+        assertEquals(1, getTile(createPentominoN(), 4).getX());
+    }
+
+    @Test
+    public void pentominoNNormal0Tile4Y()
+    {
+        assertEquals(3, getTile(createPentominoN(), 4).getY());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile0X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(0, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(1, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile1X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(1, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(1, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile2X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(1, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(0, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile3X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(2, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(0, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile4X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(3, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNNormal90Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        assertEquals(0, getTile(block, 4).getY());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile0X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(3, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile1X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(2, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile2X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(2, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile3X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile4X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNNormal180Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 4).getY());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile0X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(3, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile1X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(2, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile2X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(2, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile3X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile4X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(0, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNNormal270Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        assertEquals(1, getTile(block, 4).getY());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile0X()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(1, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(0, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile1X()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(1, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(1, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile2X()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(0, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(1, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile3X()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(0, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(2, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile4X()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(0, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNReflected0Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.reflect();
+        assertEquals(3, getTile(block, 4).getY());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile0X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(3, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile1X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile2X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile3X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile4X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNReflected90Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 4).getY());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile0X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(3, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile1X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile2X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile3X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile4X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNReflected180Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 4).getY());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile0X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 0).getX());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile0Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 0).getY());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile1X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 1).getX());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile1Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(0, getTile(block, 1).getY());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile2X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 2).getX());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile2Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 2).getY());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile3X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(2, getTile(block, 3).getX());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile3Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 3).getY());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile4X()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(3, getTile(block, 4).getX());
+    }
+
+    @Test
+    public void pentominoNReflected270Tile4Y()
+    {
+        Block block = createPentominoN();
+        block.rotate();
+        block.rotate();
+        block.rotate();
+        block.reflect();
+        assertEquals(1, getTile(block, 4).getY());
     }
 }
 
