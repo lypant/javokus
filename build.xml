@@ -85,6 +85,7 @@
                 <exclude name="**/Measurable*.class"/>
                 <exclude name="**/Transformation*.class"/>
                 <exclude name="**/Transformability*.class"/>
+                <exclude name="**/TileProvider*.class"/>
             </fileset>
         </cobertura-instrument>
     </target>

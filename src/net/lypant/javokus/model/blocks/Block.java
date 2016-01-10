@@ -4,7 +4,7 @@ import java.util.*;
 
 import static net.lypant.javokus.model.blocks.Transformation.*;
 
-public class Block implements Measurable, Transformability, Transformation, Iterable<Tile>
+public class Block implements Measurable, Transformability, Transformation, TileProvider
 {
     private final Polyomino polyomino;
     private final Transformation transformation;
@@ -264,6 +264,12 @@ public class Block implements Measurable, Transformability, Transformation, Iter
                 throw new UnsupportedOperationException();
             }
         };
+    }
+
+    @Override
+    public int getTileCount()
+    {
+        return polyomino.getTileCount();
     }
 }
 

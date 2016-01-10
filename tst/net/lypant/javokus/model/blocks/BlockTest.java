@@ -1164,5 +1164,17 @@ public class BlockTest
         block.reflect();
         assertEquals(1, getTile(block, 4).getY());
     }
+
+    @Test
+    public void monominoTileCount()
+    {
+        assertEquals(1, createMonomino().getTileCount());
+    }
+
+    @Test
+    public void pentominoNTileCount()
+    {
+        assertEquals(5, createPentominoN().getTileCount());
+    }
 }
 

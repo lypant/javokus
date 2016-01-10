@@ -6,7 +6,7 @@ import static net.lypant.javokus.model.blocks.Transformability.Rotateability.*;
 import static net.lypant.javokus.model.blocks.Transformability.Reflectability.*;
 import net.lypant.javokus.model.blocks.Transformability.*;
 
-public class Polyomino implements Transformability, Measurable, Iterable<Tile>
+public class Polyomino implements Transformability, Measurable, TileProvider
 {
     private final static int MAX_TILE_COUNT = 5;
     private Rotateability rotateability;
@@ -112,6 +112,7 @@ public class Polyomino implements Transformability, Measurable, Iterable<Tile>
         size.extendWithTile(tile);
     }
 
+    @Override
     public int getTileCount()
     {
         return tiles.size();
