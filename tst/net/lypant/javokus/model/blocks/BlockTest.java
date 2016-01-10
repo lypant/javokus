@@ -448,6 +448,14 @@ public class BlockTest
     }
 
     @Test
+    public void hasNext()
+    {
+        Block block = createMonomino();
+        Iterator<Tile> it = block.iterator();
+        assertTrue(it.hasNext());
+    }
+
+    @Test
     public void pentominoNNormal0Tile0X()
     {
         assertEquals(0, getTile(createPentominoN(), 0).getX());
