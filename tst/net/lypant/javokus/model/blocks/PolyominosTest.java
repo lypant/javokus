@@ -35,6 +35,16 @@ public class PolyominosTest
         return polyominos.getPolyomino(DOMINO);
     }
 
+    private Polyomino getTrominoI()
+    {
+        return polyominos.getPolyomino(TROMINO_I);
+    }
+
+    private Polyomino getTrominoV()
+    {
+        return polyominos.getPolyomino(TROMINO_V);
+    }
+
     private Polyomino getPentominoI()
     {
         return polyominos.getPolyomino(PENTOMINO_I);
@@ -206,6 +216,186 @@ public class PolyominosTest
     public void dominoHeight()
     {
         assertEquals(2, getDomino().getHeight());
+    }
+
+    @Test
+    public void trominoI()
+    {
+        assertNotNull(getTrominoI());
+    }
+
+    @Test
+    public void trominoIRotateability()
+    {
+        assertTrue(getTrominoI().isRotateable());
+    }
+
+    @Test
+    public void trominoIRotationOrientationCount()
+    {
+        assertEquals(2, getTrominoI().getRotationOrientationCount());
+    }
+
+    @Test
+    public void trominoIReflectability()
+    {
+        assertFalse(getTrominoI().isReflectable());
+    }
+
+    @Test
+    public void trominoIReflectabilityOptional()
+    {
+        assertFalse(getTrominoI().isReflectableOptionally());
+    }
+
+    @Test
+    public void trominoIReflectionOrientationCount()
+    {
+        assertEquals(0, getTrominoI().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void trominoITileCount()
+    {
+        assertEquals(3, getTrominoI().getTileCount());
+    }
+
+    @Test
+    public void trominoITile0X()
+    {
+        assertEquals(0, getTile(getTrominoI(), 0).getX());
+    }
+
+    @Test
+    public void trominoITile0Y()
+    {
+        assertEquals(0, getTile(getTrominoI(), 0).getY());
+    }
+
+    @Test
+    public void trominoITile1X()
+    {
+        assertEquals(0, getTile(getTrominoI(), 1).getX());
+    }
+
+    @Test
+    public void trominoITile1Y()
+    {
+        assertEquals(1, getTile(getTrominoI(), 1).getY());
+    }
+
+    @Test
+    public void trominoITile2X()
+    {
+        assertEquals(0, getTile(getTrominoI(), 2).getX());
+    }
+
+    @Test
+    public void trominoITile2Y()
+    {
+        assertEquals(2, getTile(getTrominoI(), 2).getY());
+    }
+
+    @Test
+    public void trominoIWidth()
+    {
+        assertEquals(1, getTrominoI().getWidth());
+    }
+
+    @Test
+    public void trominoIHeight()
+    {
+        assertEquals(3, getTrominoI().getHeight());
+    }
+
+    @Test
+    public void trominoV()
+    {
+        assertNotNull(getTrominoV());
+    }
+
+    @Test
+    public void trominoVRotateability()
+    {
+        assertTrue(getTrominoV().isRotateable());
+    }
+
+    @Test
+    public void trominoVRotationOrientationCount()
+    {
+        assertEquals(4, getTrominoV().getRotationOrientationCount());
+    }
+
+    @Test
+    public void trominoVReflectability()
+    {
+        assertTrue(getTrominoV().isReflectable());
+    }
+
+    @Test
+    public void trominoVReflectabilityOptional()
+    {
+        assertTrue(getTrominoV().isReflectableOptionally());
+    }
+
+    @Test
+    public void trominoVReflectionOrientationCount()
+    {
+        assertEquals(2, getTrominoV().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void trominoVTileCount()
+    {
+        assertEquals(3, getTrominoV().getTileCount());
+    }
+
+    @Test
+    public void trominoVTile0X()
+    {
+        assertEquals(0, getTile(getTrominoV(), 0).getX());
+    }
+
+    @Test
+    public void trominoVTile0Y()
+    {
+        assertEquals(0, getTile(getTrominoV(), 0).getY());
+    }
+
+    @Test
+    public void trominoVTile1X()
+    {
+        assertEquals(1, getTile(getTrominoV(), 1).getX());
+    }
+
+    @Test
+    public void trominoVTile1Y()
+    {
+        assertEquals(0, getTile(getTrominoV(), 1).getY());
+    }
+
+    @Test
+    public void trominoVTile2X()
+    {
+        assertEquals(0, getTile(getTrominoV(), 2).getX());
+    }
+
+    @Test
+    public void trominoVTile2Y()
+    {
+        assertEquals(1, getTile(getTrominoV(), 2).getY());
+    }
+
+    @Test
+    public void trominoVWidth()
+    {
+        assertEquals(2, getTrominoV().getWidth());
+    }
+
+    @Test
+    public void trominoVHeight()
+    {
+        assertEquals(2, getTrominoV().getHeight());
     }
 
     @Test

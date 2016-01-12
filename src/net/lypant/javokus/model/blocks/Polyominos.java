@@ -13,6 +13,8 @@ public class Polyominos
     {
         MONOMINO,
         DOMINO,
+        TROMINO_I,
+        TROMINO_V,
         PENTOMINO_I,
         PENTOMINO_F,
         PENTOMINO_N
@@ -31,6 +33,8 @@ public class Polyominos
     {
         polyominos.put(MONOMINO, createMonomino());
         polyominos.put(DOMINO, createDomino());
+        polyominos.put(TROMINO_I, createTrominoI());
+        polyominos.put(TROMINO_V, createTrominoV());
         polyominos.put(PENTOMINO_I, createPentominoI());
         polyominos.put(PENTOMINO_F, createPentominoF());
         polyominos.put(PENTOMINO_N, createPentominoN());
@@ -47,6 +51,24 @@ public class Polyominos
     {
         Polyomino polyomino = new Polyomino(ROTATEABLE_2_ORIENTATIONS, NOT_REFLECTABLE);
         polyomino.addTile(new Tile(0, 0));
+        polyomino.addTile(new Tile(0, 1));
+        return polyomino;
+    }
+
+    private Polyomino createTrominoI()
+    {
+        Polyomino polyomino = new Polyomino(ROTATEABLE_2_ORIENTATIONS, NOT_REFLECTABLE);
+        polyomino.addTile(new Tile(0, 0));
+        polyomino.addTile(new Tile(0, 1));
+        polyomino.addTile(new Tile(0, 2));
+        return polyomino;
+    }
+
+    private Polyomino createTrominoV()
+    {
+        Polyomino polyomino = new Polyomino(ROTATEABLE_4_ORIENTATIONS, OPTIONALLY_REFLECTABLE_2_ORIENTATIONS);
+        polyomino.addTile(new Tile(0, 0));
+        polyomino.addTile(new Tile(1, 0));
         polyomino.addTile(new Tile(0, 1));
         return polyomino;
     }
