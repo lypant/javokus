@@ -45,6 +45,31 @@ public class PolyominosTest
         return polyominos.getPolyomino(TROMINO_V);
     }
 
+    private Polyomino getTetrominoO()
+    {
+        return polyominos.getPolyomino(TETROMINO_O);
+    }
+
+    private Polyomino getTetrominoI()
+    {
+        return polyominos.getPolyomino(TETROMINO_I);
+    }
+
+    private Polyomino getTetrominoT()
+    {
+        return polyominos.getPolyomino(TETROMINO_T);
+    }
+
+    private Polyomino getTetrominoZ()
+    {
+        return polyominos.getPolyomino(TETROMINO_Z);
+    }
+
+    private Polyomino getTetrominoL()
+    {
+        return polyominos.getPolyomino(TETROMINO_L);
+    }
+
     private Polyomino getPentominoI()
     {
         return polyominos.getPolyomino(PENTOMINO_I);
@@ -396,6 +421,516 @@ public class PolyominosTest
     public void trominoVHeight()
     {
         assertEquals(2, getTrominoV().getHeight());
+    }
+
+    @Test
+    public void tetrominoO()
+    {
+        assertNotNull(getTetrominoO());
+    }
+
+    @Test
+    public void tetrominoORotateability()
+    {
+        assertFalse(getTetrominoO().isRotateable());
+    }
+
+    @Test
+    public void tetrominoORotationOrientationCount()
+    {
+        assertEquals(0, getTetrominoO().getRotationOrientationCount());
+    }
+
+    @Test
+    public void tetrominoOReflectability()
+    {
+        assertFalse(getTetrominoO().isReflectable());
+    }
+
+    @Test
+    public void tetrominoOReflectabilityOptional()
+    {
+        assertFalse(getTetrominoO().isReflectableOptionally());
+    }
+
+    @Test
+    public void tetrominoOReflectionOrientationCount()
+    {
+        assertEquals(0, getTetrominoO().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void tetrominoOTileCount()
+    {
+        assertEquals(4, getTetrominoO().getTileCount());
+    }
+
+    @Test
+    public void tetrominoOTile0X()
+    {
+        assertEquals(0, getTile(getTetrominoO(), 0).getX());
+    }
+
+    @Test
+    public void tetrominoOTile0Y()
+    {
+        assertEquals(0, getTile(getTetrominoO(), 0).getY());
+    }
+
+    @Test
+    public void tetrominoOTile1X()
+    {
+        assertEquals(1, getTile(getTetrominoO(), 1).getX());
+    }
+
+    @Test
+    public void tetrominoOTile1Y()
+    {
+        assertEquals(0, getTile(getTetrominoO(), 1).getY());
+    }
+
+    @Test
+    public void tetrominoOTile2X()
+    {
+        assertEquals(0, getTile(getTetrominoO(), 2).getX());
+    }
+
+    @Test
+    public void tetrominoOTile2Y()
+    {
+        assertEquals(1, getTile(getTetrominoO(), 2).getY());
+    }
+
+    @Test
+    public void tetrominoOTile3X()
+    {
+        assertEquals(1, getTile(getTetrominoO(), 3).getX());
+    }
+
+    @Test
+    public void tetrominoOTile3Y()
+    {
+        assertEquals(1, getTile(getTetrominoO(), 3).getY());
+    }
+
+    @Test
+    public void tetrominoOWidth()
+    {
+        assertEquals(2, getTetrominoO().getWidth());
+    }
+
+    @Test
+    public void tetrominoOHeight()
+    {
+        assertEquals(2, getTetrominoO().getHeight());
+    }
+
+    @Test
+    public void tetrominoI()
+    {
+        assertNotNull(getTetrominoI());
+    }
+
+    @Test
+    public void tetrominoIRotateability()
+    {
+        assertTrue(getTetrominoI().isRotateable());
+    }
+
+    @Test
+    public void tetrominoIRotationOrientationCount()
+    {
+        assertEquals(2, getTetrominoI().getRotationOrientationCount());
+    }
+
+    @Test
+    public void tetrominoIReflectability()
+    {
+        assertFalse(getTetrominoI().isReflectable());
+    }
+
+    @Test
+    public void tetrominoIReflectabilityOptional()
+    {
+        assertFalse(getTetrominoI().isReflectableOptionally());
+    }
+
+    @Test
+    public void tetrominoIReflectionOrientationCount()
+    {
+        assertEquals(0, getTetrominoI().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void tetrominoITileCount()
+    {
+        assertEquals(4, getTetrominoI().getTileCount());
+    }
+
+    @Test
+    public void tetrominoITile0X()
+    {
+        assertEquals(0, getTile(getTetrominoI(), 0).getX());
+    }
+
+    @Test
+    public void tetrominoITile0Y()
+    {
+        assertEquals(0, getTile(getTetrominoI(), 0).getY());
+    }
+
+    @Test
+    public void tetrominoITile1X()
+    {
+        assertEquals(0, getTile(getTetrominoI(), 1).getX());
+    }
+
+    @Test
+    public void tetrominoITile1Y()
+    {
+        assertEquals(1, getTile(getTetrominoI(), 1).getY());
+    }
+
+    @Test
+    public void tetrominoITile2X()
+    {
+        assertEquals(0, getTile(getTetrominoI(), 2).getX());
+    }
+
+    @Test
+    public void tetrominoITile2Y()
+    {
+        assertEquals(2, getTile(getTetrominoI(), 2).getY());
+    }
+
+    @Test
+    public void tetrominoITile3X()
+    {
+        assertEquals(0, getTile(getTetrominoI(), 3).getX());
+    }
+
+    @Test
+    public void tetrominoITile3Y()
+    {
+        assertEquals(3, getTile(getTetrominoI(), 3).getY());
+    }
+
+    @Test
+    public void tetrominoIWidth()
+    {
+        assertEquals(1, getTetrominoI().getWidth());
+    }
+
+    @Test
+    public void tetrominoIHeight()
+    {
+        assertEquals(4, getTetrominoI().getHeight());
+    }
+
+    @Test
+    public void tetrominoT()
+    {
+        assertNotNull(getTetrominoT());
+    }
+
+    @Test
+    public void tetrominoTRotateability()
+    {
+        assertTrue(getTetrominoT().isRotateable());
+    }
+
+    @Test
+    public void tetrominoTRotationOrientationCount()
+    {
+        assertEquals(4, getTetrominoT().getRotationOrientationCount());
+    }
+
+    @Test
+    public void tetrominoTReflectability()
+    {
+        assertTrue(getTetrominoT().isReflectable());
+    }
+
+    @Test
+    public void tetrominoTReflectabilityOptional()
+    {
+        assertTrue(getTetrominoT().isReflectableOptionally());
+    }
+
+    @Test
+    public void tetrominoTReflectionOrientationCount()
+    {
+        assertEquals(2, getTetrominoT().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void tetrominoTTileCount()
+    {
+        assertEquals(4, getTetrominoT().getTileCount());
+    }
+
+    @Test
+    public void tetrominoTTile0X()
+    {
+        assertEquals(1, getTile(getTetrominoT(), 0).getX());
+    }
+
+    @Test
+    public void tetrominoTTile0Y()
+    {
+        assertEquals(0, getTile(getTetrominoT(), 0).getY());
+    }
+
+    @Test
+    public void tetrominoTTile1X()
+    {
+        assertEquals(0, getTile(getTetrominoT(), 1).getX());
+    }
+
+    @Test
+    public void tetrominoTTile1Y()
+    {
+        assertEquals(1, getTile(getTetrominoT(), 1).getY());
+    }
+
+    @Test
+    public void tetrominoTTile2X()
+    {
+        assertEquals(1, getTile(getTetrominoT(), 2).getX());
+    }
+
+    @Test
+    public void tetrominoTTile2Y()
+    {
+        assertEquals(1, getTile(getTetrominoT(), 2).getY());
+    }
+
+    @Test
+    public void tetrominoTTile3X()
+    {
+        assertEquals(2, getTile(getTetrominoT(), 3).getX());
+    }
+
+    @Test
+    public void tetrominoTTile3Y()
+    {
+        assertEquals(1, getTile(getTetrominoT(), 3).getY());
+    }
+
+    @Test
+    public void tetrominoTWidth()
+    {
+        assertEquals(3, getTetrominoT().getWidth());
+    }
+
+    @Test
+    public void tetrominoTHeight()
+    {
+        assertEquals(2, getTetrominoT().getHeight());
+    }
+
+    @Test
+    public void tetrominoZ()
+    {
+        assertNotNull(getTetrominoZ());
+    }
+
+    @Test
+    public void tetrominoZRotateability()
+    {
+        assertTrue(getTetrominoZ().isRotateable());
+    }
+
+    @Test
+    public void tetrominoZRotationOrientationCount()
+    {
+        assertEquals(2, getTetrominoZ().getRotationOrientationCount());
+    }
+
+    @Test
+    public void tetrominoZReflectability()
+    {
+        assertTrue(getTetrominoZ().isReflectable());
+    }
+
+    @Test
+    public void tetrominoZReflectabilityOptional()
+    {
+        assertFalse(getTetrominoZ().isReflectableOptionally());
+    }
+
+    @Test
+    public void tetrominoZReflectionOrientationCount()
+    {
+        assertEquals(2, getTetrominoZ().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void tetrominoZTileCount()
+    {
+        assertEquals(4, getTetrominoZ().getTileCount());
+    }
+
+    @Test
+    public void tetrominoZTile0X()
+    {
+        assertEquals(1, getTile(getTetrominoZ(), 0).getX());
+    }
+
+    @Test
+    public void tetrominoZTile0Y()
+    {
+        assertEquals(0, getTile(getTetrominoZ(), 0).getY());
+    }
+
+    @Test
+    public void tetrominoZTile1X()
+    {
+        assertEquals(2, getTile(getTetrominoZ(), 1).getX());
+    }
+
+    @Test
+    public void tetrominoZTile1Y()
+    {
+        assertEquals(0, getTile(getTetrominoZ(), 1).getY());
+    }
+
+    @Test
+    public void tetrominoZTile2X()
+    {
+        assertEquals(0, getTile(getTetrominoZ(), 2).getX());
+    }
+
+    @Test
+    public void tetrominoZTile2Y()
+    {
+        assertEquals(1, getTile(getTetrominoZ(), 2).getY());
+    }
+
+    @Test
+    public void tetrominoZTile3X()
+    {
+        assertEquals(1, getTile(getTetrominoZ(), 3).getX());
+    }
+
+    @Test
+    public void tetrominoZTile3Y()
+    {
+        assertEquals(1, getTile(getTetrominoZ(), 3).getY());
+    }
+
+    @Test
+    public void tetrominoZWidth()
+    {
+        assertEquals(3, getTetrominoZ().getWidth());
+    }
+
+    @Test
+    public void tetrominoZHeight()
+    {
+        assertEquals(2, getTetrominoZ().getHeight());
+    }
+
+    @Test
+    public void tetrominoL()
+    {
+        assertNotNull(getTetrominoL());
+    }
+
+    @Test
+    public void tetrominoLRotateability()
+    {
+        assertTrue(getTetrominoL().isRotateable());
+    }
+
+    @Test
+    public void tetrominoLRotationOrientationCount()
+    {
+        assertEquals(4, getTetrominoL().getRotationOrientationCount());
+    }
+
+    @Test
+    public void tetrominoLReflectability()
+    {
+        assertTrue(getTetrominoL().isReflectable());
+    }
+
+    @Test
+    public void tetrominoLReflectabilityOptional()
+    {
+        assertFalse(getTetrominoL().isReflectableOptionally());
+    }
+
+    @Test
+    public void tetrominoLReflectionOrientationCount()
+    {
+        assertEquals(2, getTetrominoL().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void tetrominoLTileCount()
+    {
+        assertEquals(4, getTetrominoL().getTileCount());
+    }
+
+    @Test
+    public void tetrominoLTile0X()
+    {
+        assertEquals(0, getTile(getTetrominoL(), 0).getX());
+    }
+
+    @Test
+    public void tetrominoLTile0Y()
+    {
+        assertEquals(0, getTile(getTetrominoL(), 0).getY());
+    }
+
+    @Test
+    public void tetrominoLTile1X()
+    {
+        assertEquals(1, getTile(getTetrominoL(), 1).getX());
+    }
+
+    @Test
+    public void tetrominoLTile1Y()
+    {
+        assertEquals(0, getTile(getTetrominoL(), 1).getY());
+    }
+
+    @Test
+    public void tetrominoLTile2X()
+    {
+        assertEquals(0, getTile(getTetrominoL(), 2).getX());
+    }
+
+    @Test
+    public void tetrominoLTile2Y()
+    {
+        assertEquals(1, getTile(getTetrominoL(), 2).getY());
+    }
+
+    @Test
+    public void tetrominoLTile3X()
+    {
+        assertEquals(0, getTile(getTetrominoL(), 3).getX());
+    }
+
+    @Test
+    public void tetrominoLTile3Y()
+    {
+        assertEquals(2, getTile(getTetrominoL(), 3).getY());
+    }
+
+    @Test
+    public void tetrominoLWidth()
+    {
+        assertEquals(2, getTetrominoL().getWidth());
+    }
+
+    @Test
+    public void tetrominoLHeight()
+    {
+        assertEquals(3, getTetrominoL().getHeight());
     }
 
     @Test
