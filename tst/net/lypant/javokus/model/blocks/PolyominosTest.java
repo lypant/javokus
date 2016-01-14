@@ -110,9 +110,24 @@ public class PolyominosTest
         return polyominos.getPolyomino(PENTOMINO_F);
     }
 
+    private Polyomino getPentominoL()
+    {
+        return polyominos.getPolyomino(PENTOMINO_L);
+    }
+
     private Polyomino getPentominoN()
     {
         return polyominos.getPolyomino(PENTOMINO_N);
+    }
+
+    private Polyomino getPentominoP()
+    {
+        return polyominos.getPolyomino(PENTOMINO_P);
+    }
+
+    private Polyomino getPentominoY()
+    {
+        return polyominos.getPolyomino(PENTOMINO_Y);
     }
 
     @Test
@@ -1876,6 +1891,120 @@ public class PolyominosTest
     }
 
     @Test
+    public void pentominoL()
+    {
+        assertNotNull(getPentominoL());
+    }
+
+    @Test
+    public void pentominoLRotateability()
+    {
+        assertTrue(getPentominoL().isRotateable());
+    }
+
+    @Test
+    public void pentominoLRotationOrientationCount()
+    {
+        assertEquals(4, getPentominoL().getRotationOrientationCount());
+    }
+
+    @Test
+    public void pentominoLReflectability()
+    {
+        assertTrue(getPentominoL().isReflectable());
+    }
+
+    @Test
+    public void pentominoLReflectabilityOptional()
+    {
+        assertFalse(getPentominoL().isReflectableOptionally());
+    }
+
+    @Test
+    public void pentominoLReflectionOrientationCount()
+    {
+        assertEquals(2, getPentominoL().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void pentominoLTileCount()
+    {
+        assertEquals(5, getPentominoL().getTileCount());
+    }
+
+    @Test
+    public void pentominoLTile0X()
+    {
+        assertEquals(0, getTile(getPentominoL(), 0).getX());
+    }
+
+    @Test
+    public void pentominoLTile0Y()
+    {
+        assertEquals(0, getTile(getPentominoL(), 0).getY());
+    }
+
+    @Test
+    public void pentominoLTile1X()
+    {
+        assertEquals(1, getTile(getPentominoL(), 1).getX());
+    }
+
+    @Test
+    public void pentominoLTile1Y()
+    {
+        assertEquals(0, getTile(getPentominoL(), 1).getY());
+    }
+
+    @Test
+    public void pentominoLTile2X()
+    {
+        assertEquals(0, getTile(getPentominoL(), 2).getX());
+    }
+
+    @Test
+    public void pentominoLTile2Y()
+    {
+        assertEquals(1, getTile(getPentominoL(), 2).getY());
+    }
+
+    @Test
+    public void pentominoLTile3X()
+    {
+        assertEquals(0, getTile(getPentominoL(), 3).getX());
+    }
+
+    @Test
+    public void pentominoLTile3Y()
+    {
+        assertEquals(2, getTile(getPentominoL(), 3).getY());
+    }
+
+    @Test
+    public void pentominoLTile4X()
+    {
+        assertEquals(0, getTile(getPentominoL(), 4).getX());
+    }
+
+    @Test
+    public void pentominoLTile4Y()
+    {
+        assertEquals(3, getTile(getPentominoL(), 4).getY());
+    }
+
+    @Test
+    public void pentominoLWidth()
+    {
+        assertEquals(2, getPentominoL().getWidth());
+    }
+
+    @Test
+    public void pentominoLHeight()
+    {
+        assertEquals(4, getPentominoL().getHeight());
+    }
+
+    @Test
     public void pentominoN()
     {
         assertNotNull(getPentominoN());
@@ -1987,6 +2116,234 @@ public class PolyominosTest
     public void pentominoNHeight()
     {
         assertEquals(4, getPentominoN().getHeight());
+    }
+
+    @Test
+    public void pentominoP()
+    {
+        assertNotNull(getPentominoP());
+    }
+
+    @Test
+    public void pentominoPRotateability()
+    {
+        assertTrue(getPentominoP().isRotateable());
+    }
+
+    @Test
+    public void pentominoPRotationOrientationCount()
+    {
+        assertEquals(4, getPentominoP().getRotationOrientationCount());
+    }
+
+    @Test
+    public void pentominoPReflectability()
+    {
+        assertTrue(getPentominoP().isReflectable());
+    }
+
+    @Test
+    public void pentominoPReflectabilityOptional()
+    {
+        assertFalse(getPentominoP().isReflectableOptionally());
+    }
+
+    @Test
+    public void pentominoPReflectionOrientationCount()
+    {
+        assertEquals(2, getPentominoP().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void pentominoPTileCount()
+    {
+        assertEquals(5, getPentominoP().getTileCount());
+    }
+
+    @Test
+    public void pentominoPTile0X()
+    {
+        assertEquals(0, getTile(getPentominoP(), 0).getX());
+    }
+
+    @Test
+    public void pentominoPTile0Y()
+    {
+        assertEquals(0, getTile(getPentominoP(), 0).getY());
+    }
+
+    @Test
+    public void pentominoPTile1X()
+    {
+        assertEquals(0, getTile(getPentominoP(), 1).getX());
+    }
+
+    @Test
+    public void pentominoPTile1Y()
+    {
+        assertEquals(1, getTile(getPentominoP(), 1).getY());
+    }
+
+    @Test
+    public void pentominoPTile2X()
+    {
+        assertEquals(1, getTile(getPentominoP(), 2).getX());
+    }
+
+    @Test
+    public void pentominoPTile2Y()
+    {
+        assertEquals(1, getTile(getPentominoP(), 2).getY());
+    }
+
+    @Test
+    public void pentominoPTile3X()
+    {
+        assertEquals(0, getTile(getPentominoP(), 3).getX());
+    }
+
+    @Test
+    public void pentominoPTile3Y()
+    {
+        assertEquals(2, getTile(getPentominoP(), 3).getY());
+    }
+
+    @Test
+    public void pentominoPTile4X()
+    {
+        assertEquals(1, getTile(getPentominoP(), 4).getX());
+    }
+
+    @Test
+    public void pentominoPTile4Y()
+    {
+        assertEquals(2, getTile(getPentominoP(), 4).getY());
+    }
+
+    @Test
+    public void pentominoPWidth()
+    {
+        assertEquals(2, getPentominoP().getWidth());
+    }
+
+    @Test
+    public void pentominoPHeight()
+    {
+        assertEquals(3, getPentominoP().getHeight());
+    }
+
+    @Test
+    public void pentominoY()
+    {
+        assertNotNull(getPentominoY());
+    }
+
+    @Test
+    public void pentominoYRotateability()
+    {
+        assertTrue(getPentominoY().isRotateable());
+    }
+
+    @Test
+    public void pentominoYRotationOrientationCount()
+    {
+        assertEquals(4, getPentominoY().getRotationOrientationCount());
+    }
+
+    @Test
+    public void pentominoYReflectability()
+    {
+        assertTrue(getPentominoY().isReflectable());
+    }
+
+    @Test
+    public void pentominoYReflectabilityOptional()
+    {
+        assertFalse(getPentominoY().isReflectableOptionally());
+    }
+
+    @Test
+    public void pentominoYReflectionOrientationCount()
+    {
+        assertEquals(2, getPentominoY().getReflectionOrientationCount());
+    }
+
+    @Test
+    public void pentominoYTileCount()
+    {
+        assertEquals(5, getPentominoY().getTileCount());
+    }
+
+    @Test
+    public void pentominoYTile0X()
+    {
+        assertEquals(1, getTile(getPentominoY(), 0).getX());
+    }
+
+    @Test
+    public void pentominoYTile0Y()
+    {
+        assertEquals(0, getTile(getPentominoY(), 0).getY());
+    }
+
+    @Test
+    public void pentominoYTile1X()
+    {
+        assertEquals(1, getTile(getPentominoY(), 1).getX());
+    }
+
+    @Test
+    public void pentominoYTile1Y()
+    {
+        assertEquals(1, getTile(getPentominoY(), 1).getY());
+    }
+
+    @Test
+    public void pentominoYTile2X()
+    {
+        assertEquals(0, getTile(getPentominoY(), 2).getX());
+    }
+
+    @Test
+    public void pentominoYTile2Y()
+    {
+        assertEquals(2, getTile(getPentominoY(), 2).getY());
+    }
+
+    @Test
+    public void pentominoYTile3X()
+    {
+        assertEquals(1, getTile(getPentominoY(), 3).getX());
+    }
+
+    @Test
+    public void pentominoYTile3Y()
+    {
+        assertEquals(2, getTile(getPentominoY(), 3).getY());
+    }
+
+    @Test
+    public void pentominoYTile4X()
+    {
+        assertEquals(1, getTile(getPentominoY(), 4).getX());
+    }
+
+    @Test
+    public void pentominoYTile4Y()
+    {
+        assertEquals(3, getTile(getPentominoY(), 4).getY());
+    }
+
+    @Test
+    public void pentominoYWidth()
+    {
+        assertEquals(2, getPentominoY().getWidth());
+    }
+
+    @Test
+    public void pentominoYHeight()
+    {
+        assertEquals(4, getPentominoY().getHeight());
     }
 }
 

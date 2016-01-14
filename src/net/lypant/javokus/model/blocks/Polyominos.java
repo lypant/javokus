@@ -32,7 +32,10 @@ public class Polyominos
         PENTOMINO_W,
         PENTOMINO_Z,
         PENTOMINO_F,
-        PENTOMINO_N
+        PENTOMINO_L,
+        PENTOMINO_N,
+        PENTOMINO_P,
+        PENTOMINO_Y
     }
 
     private static Polyominos instance = new Polyominos();
@@ -67,7 +70,10 @@ public class Polyominos
         polyominos.put(PENTOMINO_W, createPentominoW());
         polyominos.put(PENTOMINO_Z, createPentominoZ());
         polyominos.put(PENTOMINO_F, createPentominoF());
+        polyominos.put(PENTOMINO_L, createPentominoL());
         polyominos.put(PENTOMINO_N, createPentominoN());
+        polyominos.put(PENTOMINO_P, createPentominoP());
+        polyominos.put(PENTOMINO_Y, createPentominoY());
     }
 
     private Polyomino createMonomino()
@@ -241,12 +247,45 @@ public class Polyominos
         return polyomino;
     }
 
+    private Polyomino createPentominoL()
+    {
+        Polyomino polyomino = new Polyomino(ROTATEABLE_4_ORIENTATIONS, REFLECTABLE_2_ORIENTATIONS);
+        polyomino.addTile(new Tile(0, 0));
+        polyomino.addTile(new Tile(1, 0));
+        polyomino.addTile(new Tile(0, 1));
+        polyomino.addTile(new Tile(0, 2));
+        polyomino.addTile(new Tile(0, 3));
+        return polyomino;
+    }
+
     private Polyomino createPentominoN()
     {
         Polyomino polyomino = new Polyomino(ROTATEABLE_4_ORIENTATIONS, REFLECTABLE_2_ORIENTATIONS);
         polyomino.addTile(new Tile(0, 0));
         polyomino.addTile(new Tile(0, 1));
         polyomino.addTile(new Tile(1, 1));
+        polyomino.addTile(new Tile(1, 2));
+        polyomino.addTile(new Tile(1, 3));
+        return polyomino;
+    }
+
+    private Polyomino createPentominoP()
+    {
+        Polyomino polyomino = new Polyomino(ROTATEABLE_4_ORIENTATIONS, REFLECTABLE_2_ORIENTATIONS);
+        polyomino.addTile(new Tile(0, 0));
+        polyomino.addTile(new Tile(0, 1));
+        polyomino.addTile(new Tile(1, 1));
+        polyomino.addTile(new Tile(0, 2));
+        polyomino.addTile(new Tile(1, 2));
+        return polyomino;
+    }
+
+    private Polyomino createPentominoY()
+    {
+        Polyomino polyomino = new Polyomino(ROTATEABLE_4_ORIENTATIONS, REFLECTABLE_2_ORIENTATIONS);
+        polyomino.addTile(new Tile(1, 0));
+        polyomino.addTile(new Tile(1, 1));
+        polyomino.addTile(new Tile(0, 2));
         polyomino.addTile(new Tile(1, 2));
         polyomino.addTile(new Tile(1, 3));
         return polyomino;
